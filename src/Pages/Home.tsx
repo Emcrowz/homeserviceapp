@@ -1,6 +1,6 @@
 import { Categories } from "../Components/Categories";
 import { Search } from "../Components/Search";
-import "./Home.modules.css";
+import "./Home.module.css";
 
 export const Home = () => {
   return (

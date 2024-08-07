@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Categories.modules.css";
+import "./Categories.module.css";
 
 export const Categories = () => {
   const [categories, setCategories] = useState<string[]>([

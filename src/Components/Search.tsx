@@ -1,4 +1,4 @@
-import "./Search.modules.css";
+import "./Search.module.css";
 
 export const Search = () => {
   const handleSubmit = (e) => {
