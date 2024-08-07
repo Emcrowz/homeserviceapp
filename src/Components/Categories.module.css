@@ -1,4 +1,4 @@
-.category-container {
+.categories {
   display: flex;
   justify-content: space-around;
 }

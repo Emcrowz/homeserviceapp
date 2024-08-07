@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Categories.module.css";
+import styles from "./Categories.module.css";
 
 export const Categories = () => {
   const [categories, setCategories] = useState<string[]>([
@@ -11,7 +11,7 @@ export const Categories = () => {
   ]);
 
   return (
-    <div className="category-container">
+    <div className={styles.categories}>
       {categories.map((category) => (
         <a href={`/service/${category}`}>{category}</a>
       ))}

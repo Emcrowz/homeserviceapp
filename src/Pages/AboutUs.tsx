@@ -1,3 +1,10 @@
+import TopBar from "../Components/TopBar";
+
 export const AboutUs = () => {
-  return <div>AboutUs</div>;
+  return (
+    <div>
+      <TopBar />
+      <h2>AboutUs</h2>
+    </div>
+  );
 };

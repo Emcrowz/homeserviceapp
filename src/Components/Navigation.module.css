@@ -1,8 +1,8 @@
-.links li {
+.links a {
   display: inline-block;
   margin-right: 20px;
 }
 
-.links li:last-child {
+.links a:last-child {
   margin-right: 0;
 }

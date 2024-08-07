@@ -1,3 +1,10 @@
+import TopBar from "../Components/TopBar";
+
 export const Services = () => {
-  return <div>Services</div>;
+  return (
+    <div>
+      <TopBar />
+      <h2>Services</h2>
+    </div>
+  );
 };

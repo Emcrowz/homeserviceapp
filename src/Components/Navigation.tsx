@@ -1,20 +1,14 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
-export default function Navigation() {
+const Navigation: React.FC = () => {
   return (
-    <nav>
-      <ul className={styles.links}>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/services">Services</NavLink>
-        </li>
-        <li>
-          <NavLink to="/aboutus">About Us</NavLink>
-        </li>
-      </ul>
+    <nav className={styles.links}>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/services">Services</NavLink>
+      <NavLink to="/aboutus">About Us</NavLink>
     </nav>
   );
-}
+};
+
+export default Navigation;

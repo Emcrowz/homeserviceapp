@@ -1,5 +1,5 @@
-.topbar-container {
-  height: 50px;
+.topbar {
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;

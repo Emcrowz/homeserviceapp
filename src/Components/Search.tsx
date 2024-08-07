@@ -1,6 +1,6 @@
 import "./Search.module.css";
 
-export const Search = () => {
+export const Search: React.FC = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
