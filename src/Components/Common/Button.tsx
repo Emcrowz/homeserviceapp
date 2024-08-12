@@ -1,11 +1,7 @@
 import styles from "./Button.module.css";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  rouded?: boolean;
-  small?: boolean;
-  large?: boolean;
-}
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export const Button = ({ ...props }: ButtonProps) => {
-  return <button>Button</button>;
+  return <button className={styles.custBtn}>{props.children}</button>;
 };
