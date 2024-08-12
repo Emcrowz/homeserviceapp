@@ -1,3 +1,15 @@
-.main-container {
+.heroContainer {
+  padding-top: 2rem;
   place-items: center;
+}
+
+.title {
+  font-size: 3.5rem;
+  line-height: 5rem;
+}
+
+.subtitle {
+  color: #a8a8a8;
+  font-size: 1.5rem;
+  padding: 1rem;
 }

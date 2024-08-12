@@ -1,4 +1,4 @@
-import TopBar from "../Components/TopBar";
+import { TopBar } from "../Components/Layout/TopBar";
 
 export const AboutUs = () => {
   return (

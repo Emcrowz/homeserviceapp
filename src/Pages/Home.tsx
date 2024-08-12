@@ -1,16 +1,20 @@
-import { Categories } from "../Components/Categories";
-import { Search } from "../Components/Search";
-import TopBar from "../Components/TopBar";
-import "./Home.module.css";
+import { Categories } from "../Components/Category/Categories";
+import { Search } from "../Components/Common/Search";
+import { TopBar } from "../Components/Layout/TopBar";
+import styles from "./Home.module.css";
 
 export const Home = () => {
   return (
-    <div className="main-containter">
+    <div>
       <TopBar />
-      <h2>Find Home Service/Repair Near You</h2>
-      <span>Explore Best Home Services & Repair near you</span>
+      <div className={styles.heroContainer}>
+        <h2 className={styles.title}>Find Home Service/Repair Near You</h2>
+        <span className={styles.subtitle}>
+          Explore Best Home Services & Repair near you
+        </span>
+      </div>
       <Search />
-      <Categories />
+      <Categories display="horizontal" />
     </div>
   );
 };

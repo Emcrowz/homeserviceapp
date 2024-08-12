@@ -2,22 +2,8 @@ import { createBrowserRouter, Outlet } from "react-router-dom";
 import { Home } from "../Pages/Home.tsx";
 import { Services } from "../Pages/Services.tsx";
 import { AboutUs } from "../Pages/AboutUs.tsx";
-
-// export const Router = () => {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/services" element={<Services />} />
-//         <Route path="/aboutus" element={<AboutUs />} />
-//         {/* <Route path="/login" element={<Login />} /> */}
-//         {/* <Route path="/register" element={<Register />} /> */}
-//         {/* <Route path="/search/:category" element={<SearchCategory />} /> */}
-//         <Route path="*" element={<Home />} />
-//       </Routes>
-//     </BrowserRouter>
-//   );
-// };
+import { ROUTES } from "./RouterConsts.ts";
+import { ErrorPage } from "../Pages/ErrorPage.tsx";
 
 const Root = () => {
   return (
@@ -31,17 +17,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
+        path: ROUTES.HOME,
         element: <Home />,
       },
       {
-        path: "/services",
+        path: ROUTES.SERVICES,
         element: <Services />,
       },
       {
-        path: "/aboutus",
+        path: ROUTES.ABOUT_US,
         element: <AboutUs />,
       },
     ],

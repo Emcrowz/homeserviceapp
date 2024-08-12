@@ -1,0 +1,31 @@
+.button {
+  padding: 0.75rem 1.25rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  &:hover {
+    background-color: #5b24e7;
+  }
+}
+
+.rounded {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.large {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+}
+
+.small {
+  padding: 0.5rem 1rem;
+}
