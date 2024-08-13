@@ -1,6 +1,13 @@
 const express = require("express");
-const app = express();
+const { connectToDb, PORT } = require("./mongodb");
 
+// Models
+const User = require("./Models/User");
+const Booking = require("./Models/Booking");
+const Business = require("./Models/Business");
+const Category = require("./Models/Category");
+
+const app = express();
 app.use(express.json()); // Middleware to parse JSON data
 
 const categories = [
@@ -164,7 +171,63 @@ app.delete("/bookings/:id", (req, res) => {
   }
 });
 
-// == Server listening
-app.listen(3000, () => {
-  console.log("Server listening on port 3000.");
+// MongoDB
+app.get("/users", async (req, res) => {
+  try {
+    const users = await User.find();
+    console.log(users);
+    res.json(users);
+  } catch (err) {
+    console.log(err); // for 'logger' purposes
+    res.status(500).json({ message: "Error fetching users", error: err });
+  }
 });
+
+app.post("/users", async (req, res) => {
+  const newUser = new User(req.body);
+  try {
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+app.put("/users/:id", async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!updatedUser) {
+      return res.status(404).send("User not found");
+    }
+    res.json(updatedUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+app.delete("/users/:id", async (req, res) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+    if (!deletedUser) {
+      return res.status(404).send("User not found");
+    }
+    res.json(deletedUser);
+  } catch (err) {
+    res.status(404).json(err);
+  }
+});
+
+// == Server listening
+// app.listen(3001, () => {
+//   console.log("Local Server listening on port 3001.");
+// });
+
+connectToDb()
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB: ", err.message);
+  });
