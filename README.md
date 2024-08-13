@@ -182,7 +182,3 @@ Creates a new category in the Category list.
 | Parameter | Type     | Description                     |
 | :-------- | :------- | :------------------------------ |
 | `id`      | `number` | **Required**. Id of the booking |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
