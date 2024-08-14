@@ -34,14 +34,25 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm install
+  npm run initialise-homeserviceapp-backend
+```
+
+```bash
+  npm run initialise-homeserviceapp-frontend
 ```
 
 Start the project
 
 ```bash
-  npm run start-homeserviceapp
+  npm run start-homeserviceapp-backend
 ```
+
+```bash
+  npm run start-homeserviceapp-frontend
+```
+
+> [!NOTE]
+> Backend requires a connection string filled in a file called `.env` in order to connect to the mongoDB server.
 
 ## Running Tests
 

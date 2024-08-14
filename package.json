@@ -1,0 +1,14 @@
+{
+  "name": "homeserviceapp",
+  "version": "1.0.0",
+  "description": "Home Service/Repair Web Application",
+  "main": "index.js",
+  "scripts": {
+    "initialise-homeserviceapp-backend": "cd backend && npm install && node server.js",
+    "initialise-homeserviceapp-frontend": "cd frontend && npm install && npm run dev",
+    "start-homeserviceapp-backend": "cd backend && node server.js",
+    "start-homeserviceapp-frontend": "cd frontend && npm install && npm run dev"
+  },
+  "author": "",
+  "license": "ISC"
+}
