@@ -1,4 +1,5 @@
 import styles from "./CategoryItem.module.css";
+import { Button } from "../Common/Button";
 
 import { Solution } from "./Solution";
 
@@ -21,7 +22,7 @@ export const CategoryItem = ({ solution }: CategoryItemProps) => {
         <h3 className={styles.name}>{solution.name}</h3>
         <p className={styles.contactPerson}>{solution.contactPerson}</p>
         <p className={styles.address}>{solution.address}</p>
-        <button>Book now</button>
+        <Button>Book now</Button>
       </div>
     </div>
   );

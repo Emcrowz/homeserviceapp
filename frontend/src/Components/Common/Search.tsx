@@ -1,4 +1,5 @@
 import styles from "./Search.module.css";
+import { Button } from "../Common/Button";
 
 interface SearchProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
@@ -14,7 +15,7 @@ export const Search: React.FC = ({ ...props }: SearchProps) => {
         placeholder="Search..."
         {...props}
       />
-      <button>Search</button>
+      <Button>Search</Button>
     </form>
   );
 };
