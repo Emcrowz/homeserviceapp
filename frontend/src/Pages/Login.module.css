@@ -1,0 +1,40 @@
+.container {
+  height: 100%;
+  padding-top: 8rem;
+}
+
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: rgba(86, 20, 208, 0.25) 5px 5px 15px;
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.input {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.link {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.signUp {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.error {
+  font-size: 0.9rem;
+  color: red;
+  margin-bottom: 1rem;
+}

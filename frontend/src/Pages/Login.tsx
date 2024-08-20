@@ -8,6 +8,7 @@ import styles from "./Login.module.css";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -16,23 +17,30 @@ export const Login = () => {
   };
 
   return (
-    <div className={styles.login}>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <h2 className={styles.title}>Login</h2>
+        {error && <p className={styles.error}>{error}</p>}
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={(e) => e.target.value}
+          onChange={(e) => setEmail(e.target.value)}
           required
+          className={styles.input}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
-          onChange={(e) => e.target.value}
+          onChange={(e) => setPassword(e.target.value)}
           required
+          className={styles.input}
         />
-        <Button type="submit">Sign In</Button>
+        <Button type="submit" styleType="small">
+          Sign In
+        </Button>
+        <div className={styles.link}></div>
       </form>
     </div>
   );

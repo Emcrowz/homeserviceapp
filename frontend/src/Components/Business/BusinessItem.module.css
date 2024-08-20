@@ -1,0 +1,53 @@
+.card {
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 1rem;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: rgba(86, 20, 208, 0.25) 5px 5px 15px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+
+.infoContainer {
+  padding: 1rem;
+  height: 50%;
+}
+
+.chip {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  background-color: #e5ddfb;
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.name {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.contactPerson {
+  margin-top: 1rem;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.address {
+  margin: 1rem 0rem;
+  color: #a8a8a8;
+}

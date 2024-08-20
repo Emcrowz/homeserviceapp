@@ -1,28 +1,22 @@
 import styles from "./CategoryItem.module.css";
-import { Button } from "../Common/Button";
-
-import { Solution } from "./Solution";
+import { Category } from "./Category";
+import { useNavigate } from "react-router-dom";
 
 interface CategoryItemProps {
-  solution: Solution;
+  category: Category;
+  path: string;
 }
 
-export const CategoryItem = ({ solution }: CategoryItemProps) => {
+export const CategoryItem = ({ category, path }: CategoryItemProps) => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.categoryItem}>
-      {solution.imageUrls.length > 0 && (
-        <img
-          src={solution.imageUrls[0]}
-          alt={solution.name}
-          className={styles.image}
-        />
-      )}
-      <div className={styles.infoContainer}>
-        <span className={styles.chip}>{solution.category}</span>
-        <h3 className={styles.name}>{solution.name}</h3>
-        <p className={styles.contactPerson}>{solution.contactPerson}</p>
-        <p className={styles.address}>{solution.address}</p>
-        <Button>Book now</Button>
+      {/* {category.url.length > 0 && (
+        <img src={category.url} alt={category.name} className={styles.image} />
+      )} */}
+      <div className={styles.infoContainer} onClick={() => navigate(path)}>
+        <h3 className={styles.name}>{category.name}</h3>
       </div>
     </div>
   );
