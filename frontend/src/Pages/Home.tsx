@@ -1,4 +1,5 @@
-import { Categories } from "../Components/Category/Categories";
+import { BusinessList } from "../Components/Business/BusinessList";
+import { CategoryList } from "../Components/Category/CategoryList";
 import { Search } from "../Components/Common/Search";
 import styles from "./Home.module.css";
 
@@ -12,7 +13,8 @@ export const Home = () => {
         </span>
       </div>
       <Search />
-      <Categories display="horizontal" />
+      <CategoryList display="horizontal" />
+      <BusinessList />
     </div>
   );
 };

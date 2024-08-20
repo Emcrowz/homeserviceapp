@@ -1,0 +1,26 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #e6e6e6;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  .name {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    font-weight: 500;
+  }
+
+  &:hover,
+  &.active {
+    background-color: #f2eefd;
+    border-color: #beaaf5;
+
+    .name {
+      color: var(--primary-color);
+    }
+  }
+}

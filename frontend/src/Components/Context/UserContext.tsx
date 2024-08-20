@@ -1,18 +1,37 @@
-// import { createContext, useState } from "react";
+import { PropsWithChildren, createContext, useState } from "react";
+import { LoginResponse, User } from "../User/User";
 
-// export const UserContext = createContext(null);
+export const UserContext = createContext<{
+  user: User | null;
+  isLoggedIn: boolean;
+  login: (user: LoginResponse) => void;
+  logout: () => void;
+}>({
+  user: null,
+  isLoggedIn: false,
+  login: () => {},
+  logout: () => {},
+});
 
-// export const UserProvider = ({ children }) => {
-//   const [user, setUser] = useState({ username: "", password: "" });
+export const UserProvider = ({ children }: PropsWithChildren) => {
+  const [user, setUser] = useState<User | null>(null);
+  const [, setToken] = useState<string | null>(null);
 
-//   const login = (user) => {
-//     setUser(user);
-//   };
-//   const logout = () => setUser(null);
+  const isLoggedIn = !!user;
 
-//   return (
-//     <UserContext.Provider value={{ user, login, logout }}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
+  const login = (loginResponse: LoginResponse) => {
+    setUser(loginResponse.user);
+    setToken(loginResponse.token);
+  };
+
+  const logout = (): void => {
+    setUser(null);
+    setToken(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ user, isLoggedIn, login, logout }}>
+      {children}
+    </UserContext.Provider>
+  );
+};

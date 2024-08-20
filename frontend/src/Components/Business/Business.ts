@@ -1,4 +1,4 @@
-export interface Solution {
+export interface Business {
   _id: string;
   name: string;
   about: string;
