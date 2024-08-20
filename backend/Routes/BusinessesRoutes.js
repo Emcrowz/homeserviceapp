@@ -23,9 +23,7 @@ router.get("/businesses/category/:category", async (req, res) => {
     });
     res.json(filteredBusinesses);
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error fetching businesses by category", error: err });
+    res.status(500).json({ message: "Error fetching businesses by category", error: err });
   }
 });
 
@@ -84,8 +82,7 @@ router.post("/businesses", async (req, res) => {
 // Put requests
 router.put("/businesses/:id", (req, res) => {
   const businessById = req.params.id;
-  const { name, about, address, category, contactPerson, email, images } =
-    req.body;
+  const { name, about, address, category, contactPerson, email, images } = req.body;
   try {
     const business = Business.findById(businessById);
     if (!business) {
@@ -106,9 +103,7 @@ router.put("/businesses/:id", (req, res) => {
     res.status(404).json({ message: "Business not found", error: err });
   }
 
-  const businessIndex = businesses.findIndex(
-    (business) => business.id === businessId
-  );
+  const businessIndex = businesses.findIndex((business) => business.id === businessId);
 
   if (businessIndex !== -1) {
     businesses[businessIndex] = {

@@ -9,9 +9,7 @@ router.get("/bookings/user/:email", async (req, res) => {
     const userBookings = await Booking.find({ userEmail: req.params.email });
     res.json(userBookings);
   } catch (err) {
-    res
-      .status(500)
-      .json({ message: "Error fetching bookings for the user", error: err });
+    res.status(500).json({ message: "Error fetching bookings for the user", error: err });
   }
 });
 
@@ -22,9 +20,7 @@ router.post("/bookings", async (req, res) => {
     await newBooking.save();
     res.status(201).json(newBooking);
   } catch (err) {
-    res
-      .status(400)
-      .json({ message: "Error creating booking", error: err?.message ?? err });
+    res.status(400).json({ message: "Error creating booking", error: err?.message ?? err });
   }
 });
 
