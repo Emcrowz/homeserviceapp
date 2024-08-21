@@ -1,5 +1,6 @@
 // console.log is kept for logging purposes.
 import express from "express";
+import cors from "cors";
 import { connectToDb, PORT } from "./mongodb";
 
 import AuthRoutes from "./Routes/AuthRoutes";
@@ -10,6 +11,7 @@ import BookingsRoutes from "./Routes/UserRoutes";
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON data
+app.use(cors());
 app.use("/auth", AuthRoutes);
 app.use("/users", UserRoutes);
 app.use("/categories", CategoriesRoutes);
