@@ -1,6 +1,15 @@
-const mongoose = require("mongoose");
+import mongoose, { Types } from "mongoose";
 
-const bookingSchema = new mongoose.Schema({
+interface IBooking {
+  businessId: Types.ObjectId;
+  date: Date;
+  time: string;
+  userEmail: string;
+  userName: string;
+  status: "confirmed" | "pending" | "cancelled";
+}
+
+const bookingSchema = new mongoose.Schema<IBooking>({
   businessId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true, // Custom error message for required field
@@ -37,5 +46,5 @@ const bookingSchema = new mongoose.Schema({
   },
 });
 
-const Booking = mongoose.model("Booking", bookingSchema);
-module.exports = Booking;
+const Booking = mongoose.model<IBooking>("Booking", bookingSchema);
+export default Booking;
