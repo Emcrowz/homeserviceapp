@@ -1,15 +1,17 @@
 // console.log is kept for logging purposes.
-const express = require("express");
-const { connectToDb, PORT } = require("./mongodb");
+import express from "express";
+import cors from "cors";
+import { connectToDb, PORT } from "./mongodb";
 
-const AuthRoutes = require("./Routes/AuthRoutes");
-const UserRoutes = require("./Routes/UserRoutes");
-const CategoriesRoutes = require("./Routes/UserRoutes");
-const BusinessesRoutes = require("./Routes/UserRoutes");
-const BookingsRoutes = require("./Routes/UserRoutes");
+import AuthRoutes from "./Routes/AuthRoutes";
+import UserRoutes from "./Routes/UserRoutes";
+import CategoriesRoutes from "./Routes/UserRoutes";
+import BusinessesRoutes from "./Routes/UserRoutes";
+import BookingsRoutes from "./Routes/UserRoutes";
 
 const app = express();
 app.use(express.json()); // Middleware to parse JSON data
+app.use(cors());
 app.use("/auth", AuthRoutes);
 app.use("/users", UserRoutes);
 app.use("/categories", CategoriesRoutes);
