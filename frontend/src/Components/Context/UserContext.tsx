@@ -1,4 +1,5 @@
-import { PropsWithChildren, createContext, useState } from "react";
+import { PropsWithChildren, createContext } from "react";
+import { useLocalStorage } from "usehooks-ts";
 import { LoginResponse, User } from "../User/User";
 
 export const UserContext = createContext<{
@@ -14,8 +15,8 @@ export const UserContext = createContext<{
 });
 
 export const UserProvider = ({ children }: PropsWithChildren) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [, setToken] = useState<string | null>(null);
+  const [user, setUser] = useLocalStorage<User | null>("user", null);
+  const [, setToken] = useLocalStorage<string | null>("token", null);
 
   const isLoggedIn = !!user;
 
@@ -29,9 +30,5 @@ export const UserProvider = ({ children }: PropsWithChildren) => {
     setToken(null);
   };
 
-  return (
-    <UserContext.Provider value={{ user, isLoggedIn, login, logout }}>
-      {children}
-    </UserContext.Provider>
-  );
+  return <UserContext.Provider value={{ user, isLoggedIn, login, logout }}>{children}</UserContext.Provider>;
 };

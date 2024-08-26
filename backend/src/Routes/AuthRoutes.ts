@@ -37,6 +37,7 @@ router.post("/login", async (req, res) => {
     const token = generateToken({ id: user._id });
 
     const userWithoutPassword = await User.findById(user._id).select("-password");
+    console.log(`${user.email} - ${token}`);
     return res.status(200).json({ status: "success", token, user: userWithoutPassword });
   } catch (err) {
     return res.status(500).json({ message: "Error attempting to log in.", error: (err as Error).message });
