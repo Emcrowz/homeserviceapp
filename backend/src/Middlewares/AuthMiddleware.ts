@@ -11,7 +11,7 @@ interface CustomRequest extends Request {
   currentUser?: UserPayload;
 }
 
-const AuthMiddleware = (req: CustomRequest, res: Response, next: NextFunction) => {
+export const AuthMiddleware = (req: CustomRequest, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -31,5 +31,3 @@ const AuthMiddleware = (req: CustomRequest, res: Response, next: NextFunction) =
 
   next();
 };
-
-export default AuthMiddleware;

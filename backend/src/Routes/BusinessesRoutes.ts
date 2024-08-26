@@ -1,8 +1,9 @@
 import express from "express";
 import Business from "../Models/Business";
 import Booking from "../Models/Booking";
-import AuthMiddleware from "../Middlewares/AuthMiddleware";
+import { AuthMiddleware } from "../Middlewares/AuthMiddleware";
 import Category from "../Models/Category";
+
 const router = express.Router();
 
 // == Business router
@@ -68,10 +69,7 @@ router.post("/", AuthMiddleware, async (req, res) => {
       });
     }
 
-    const newBusiness = new Business(business);
-
-    const savedBusiness = await newBusiness.save();
-    return res.status(201).json(savedBusiness);
+    return res.status(201).json(await new Business(business).save());
   } catch (err) {
     return res.status(500).json({
       message: "Server error while adding business.",
