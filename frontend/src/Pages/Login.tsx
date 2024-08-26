@@ -46,7 +46,10 @@ export const Login = () => {
         <Button type="submit" styleType="small">
           Sign In
         </Button>
-        <div className={styles.link}></div>
+        <div className={styles.link}>
+          <h3>Not a user?</h3>
+          <a onClick={() => navigate(ROUTES.REGISTER)}>Register here</a>
+        </div>
       </form>
     </div>
   );

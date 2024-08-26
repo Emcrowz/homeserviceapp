@@ -6,6 +6,7 @@ import { ROUTES } from "./RouterConsts.ts";
 import { ErrorPage } from "../Pages/ErrorPage.tsx";
 import { Login } from "../Pages/Login.tsx";
 import { RootLayout } from "../Components/Layout/RootLayout.tsx";
+import { Register } from "../Pages/Register.tsx";
 // import { AuthLayout } from "../Components/Layout/AuthLayout.tsx";
 // import { Register } from "../Pages/Register.tsx";
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: ROUTES.LOGIN,
         element: <Login />,
+      },
+      {
+        path: ROUTES.REGISTER,
+        element: <Register />,
       },
     ],
   },
