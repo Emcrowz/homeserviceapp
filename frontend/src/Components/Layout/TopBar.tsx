@@ -9,14 +9,22 @@ import { UserContext } from "../Context/UserContext";
 import { Avatar } from "../Common/Avatar";
 
 export const TopBar = () => {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
 
   return (
     <div className={styles.topbar}>
       <Logo />
       <Navigation />
-      {user ? <Avatar>{user.name[0]}</Avatar> : <Button onClick={() => navigate(ROUTES.LOGIN)}>Login / Sign Up</Button>}
+      {user ? (
+        <div style={{ display: "flex", gap: "1em" }}>
+          <p>Hello, {user.name}</p>
+          <Avatar>{user.name[0]}</Avatar>
+          <Button onClick={logout}>Logout</Button>
+        </div>
+      ) : (
+        <Button onClick={() => navigate(ROUTES.LOGIN)}>Login / Sign Up</Button>
+      )}
     </div>
   );
 };

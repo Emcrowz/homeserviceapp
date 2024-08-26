@@ -6,7 +6,7 @@ export const loginRequest = async (user: LoginRequest): Promise<LoginResponse> =
   return await response.data;
 };
 
-export const registerUser = async (user: RegisterRequest): Promise<void> => {
+export const registerUser = async (user: RegisterRequest): Promise<boolean> => {
   const response = await axiosInstance.post(`/auth/register`, user);
   return await response.data;
 };
