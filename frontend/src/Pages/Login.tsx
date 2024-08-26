@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../Router/RouterConsts";
 
 import { Button } from "../Components/Common/Button";
 import styles from "./Login.module.css";
+import { loginRequest } from "../Components/User/UserApi";
+import { UserContext } from "../Components/Context/UserContext";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const error = "";
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { login } = useContext(UserContext);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const res = await loginRequest({ email, password });
+    login(res);
     navigate(ROUTES.HOME);
   };
 

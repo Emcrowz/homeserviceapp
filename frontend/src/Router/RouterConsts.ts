@@ -7,3 +7,5 @@ export const ROUTES = {
   REGISTER: "/register",
   SEARCH_CATEGORY: "/search/:category",
 };
+
+export const API = "http://localhost:3005/";

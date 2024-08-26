@@ -4,6 +4,8 @@ import styles from "./CategoryList.module.css";
 import { Category } from "./Category";
 import { CategoryItem } from "./CategoryItem";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { API } from "../../Router/RouterConsts";
 
 interface CategoryListProps {
   display?: string;
@@ -13,14 +15,23 @@ interface CategoryListProps {
 export const CategoryList = ({ display }: CategoryListProps) => {
   const [categories, setCategories] = useState<Category[]>([]);
 
+  // [
+  //   { _id: 0, name: "Cleaning", color: "#000", url: "#" },
+  //   { _id: 1, name: "Repair", color: "#000", url: "#" },
+  //   { _id: 2, name: "Painting", color: "#000", url: "#" },
+  //   { _id: 3, name: "Plumbing", color: "#000", url: "#" },
+  //   { _id: 3, name: "Electric", color: "#000", url: "#" },
+  // ]
+
   useEffect(() => {
-    setCategories([
-      { _id: 0, name: "Cleaning", color: "#000", url: "#" },
-      { _id: 1, name: "Repair", color: "#000", url: "#" },
-      { _id: 2, name: "Painting", color: "#000", url: "#" },
-      { _id: 3, name: "Plumbing", color: "#000", url: "#" },
-      { _id: 3, name: "Electric", color: "#000", url: "#" },
-    ]);
+    axios
+      .get(`${API + "categories"}`)
+      .then((res) => {
+        setCategories(res.data);
+      })
+      .catch((err) => {
+        throw new Error(err);
+      });
   }, []);
 
   // const filteredCategories = categoryName
@@ -33,17 +44,13 @@ export const CategoryList = ({ display }: CategoryListProps) => {
         display === "vertical"
           ? styles.categoriesVertical
           : display === "horizontal"
-          ? styles.categoriesHorizontal
-          : styles.categoriesNone
+            ? styles.categoriesHorizontal
+            : styles.categoriesNone
       }`}
     >
       {categories.map((category) => (
         <Link to={`/service/${category.name.toLowerCase()}`}>
-          <CategoryItem
-            key={category._id}
-            category={category}
-            path={`/service/${category.name.toLowerCase()}`}
-          />
+          <CategoryItem category={category} path={`/service/${category.name.toLowerCase()}`} />
         </Link>
       ))}
     </div>
