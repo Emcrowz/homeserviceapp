@@ -1,0 +1,28 @@
+.input {
+  border-radius: 6px;
+  line-height: 1.5;
+  padding: 0.8rem 1rem;
+  transition:
+    box-shadow 100ms ease-in,
+    border 100ms ease-in,
+    background-color 100ms ease-in;
+  border: 2px solid #dee1e2;
+  color: rgb(14, 14, 16);
+  display: block;
+  width: 100%;
+
+  &:hover {
+    border-color: #ccc;
+  }
+
+  &:focus {
+    border-color: #9147ff;
+    background: #fff;
+  }
+}
+
+.error {
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 0.5rem;
+}
