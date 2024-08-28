@@ -7,6 +7,8 @@ import { ErrorPage } from "../Pages/ErrorPage.tsx";
 import { Login } from "../Forms/Login.tsx";
 import { RootLayout } from "../Components/Layout/RootLayout.tsx";
 import { Register } from "../Forms/Register.tsx";
+import { BusinessDetails } from "../Pages/BusinessDetails.tsx";
+import { ServicesFiltered } from "../Pages/ServicesFiltered.tsx";
 // import { AuthLayout } from "../Components/Layout/AuthLayout.tsx";
 // import { Register } from "../Pages/Register.tsx";
 
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: ROUTES.SERVICES,
         element: <Services />,
+      },
+      {
+        path: ROUTES.SERVICES_FILTERED,
+        element: <ServicesFiltered />,
+      },
+      {
+        path: ROUTES.DETAILS,
+        element: <BusinessDetails />,
       },
       {
         path: ROUTES.ABOUT_US,

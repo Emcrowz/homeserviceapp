@@ -4,12 +4,18 @@
   height: 450px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-10px);
     box-shadow: rgba(86, 20, 208, 0.25) 5px 5px 15px;
   }
+}
+
+.suggestion {
+  display: block;
 }
 
 .image {

@@ -6,6 +6,7 @@ import styles from "./BusinessList.module.css";
 
 interface BusinessListProps {
   categoryName?: Category["name"];
+  listStyle?: string;
 }
 
 const useBusinesses = () => {
@@ -15,31 +16,22 @@ const useBusinesses = () => {
   });
 };
 
-export const BusinessList = ({ categoryName }: BusinessListProps) => {
+export const BusinessList = ({ categoryName, listStyle }: BusinessListProps) => {
   const { data } = useBusinesses();
   const businesses = data ?? [];
 
-  // const [businesses, setBusinesses] = useState<Business[]>([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API + "businesses"}`)
-  //     .then((res) => {
-  //       setBusinesses(res.data);
-  //     })
-  //     .catch((err) => {
-  //       throw new Error(err);
-  //     });
-  // }, []);
-
   const filteredBusinesses = categoryName
-    ? businesses.filter((business) => business.category === categoryName)
+    ? businesses.filter((business) => business.category.toLocaleLowerCase() === categoryName)
     : businesses;
 
   return (
-    <div className={styles.container}>
+    <div className={`${listStyle === "suggestions" ? styles[`${listStyle}`] : styles[`container`]}`}>
       {filteredBusinesses.map((business) => (
-        <BusinessItem key={business._id} business={business} />
+        <BusinessItem
+          key={business._id}
+          business={business}
+          itemStyle={listStyle === "suggestions" ? "suggestion" : null}
+        />
       ))}
     </div>
   );
