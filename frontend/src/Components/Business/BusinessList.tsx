@@ -6,6 +6,7 @@ import styles from "./BusinessList.module.css";
 
 interface BusinessListProps {
   categoryName?: Category["name"];
+  listStyle?: string;
 }
 
 const useBusinesses = () => {
@@ -15,7 +16,7 @@ const useBusinesses = () => {
   });
 };
 
-export const BusinessList = ({ categoryName }: BusinessListProps) => {
+export const BusinessList = ({ categoryName, listStyle }: BusinessListProps) => {
   const { data } = useBusinesses();
   const businesses = data ?? [];
 
@@ -37,9 +38,13 @@ export const BusinessList = ({ categoryName }: BusinessListProps) => {
     : businesses;
 
   return (
-    <div className={styles.container}>
+    <div className={`${listStyle === "suggestions" ? styles[`${listStyle}`] : styles[`container`]}`}>
       {filteredBusinesses.map((business) => (
-        <BusinessItem key={business._id} business={business} />
+        <BusinessItem
+          key={business._id}
+          business={business}
+          itemStyle={listStyle === "suggestions" ? "suggestion" : null}
+        />
       ))}
     </div>
   );
