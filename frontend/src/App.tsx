@@ -1,16 +1,17 @@
-// import TopBar from "./Components/TopBar";
-// import Logo from "./Components/Logo";
-// import Navigation from "./Components/Navigation";
-// import Login from "./Components/Login";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { UserProvider } from "./Components/Context/UserContext";
 import router from "./Router/Router";
 import { RouterProvider } from "react-router-dom";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
+    <QueryClientProvider client={queryClient}>
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
+    </QueryClientProvider>
   );
 }
 

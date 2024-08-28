@@ -1,38 +1,37 @@
-import { useState, useEffect } from "react";
-import styles from "./CategoryList.module.css";
-
 import { Category } from "./Category";
 import { CategoryItem } from "./CategoryItem";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { API } from "../../Router/RouterConsts";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCategories } from "./CategoryApi";
+import styles from "./CategoryList.module.css";
 
 interface CategoryListProps {
   display?: string;
   categoryName?: Category["name"];
 }
 
+const useCategories = () => {
+  return useQuery({
+    queryKey: ["CATEGORIES"],
+    queryFn: fetchCategories,
+  });
+};
 export const CategoryList = ({ display }: CategoryListProps) => {
-  const [categories, setCategories] = useState<Category[]>([]);
+  const { data } = useCategories();
+  const categories = data ?? [];
 
-  // [
-  //   { _id: 0, name: "Cleaning", color: "#000", url: "#" },
-  //   { _id: 1, name: "Repair", color: "#000", url: "#" },
-  //   { _id: 2, name: "Painting", color: "#000", url: "#" },
-  //   { _id: 3, name: "Plumbing", color: "#000", url: "#" },
-  //   { _id: 3, name: "Electric", color: "#000", url: "#" },
-  // ]
+  // const [categories, setCategories] = useState<Category[]>([]);
 
-  useEffect(() => {
-    axios
-      .get(`${API + "categories"}`)
-      .then((res) => {
-        setCategories(res.data);
-      })
-      .catch((err) => {
-        throw new Error(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${API + "categories"}`)
+  //     .then((res) => {
+  //       setCategories(res.data);
+  //     })
+  //     .catch((err) => {
+  //       throw new Error(err);
+  //     });
+  // }, []);
 
   // const filteredCategories = categoryName
   //   ? category.filter((el) => el.name === categoryName)

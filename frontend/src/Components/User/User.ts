@@ -1,4 +1,7 @@
+import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
 import * as Yup from "yup";
+import { loginRequest, registerUser } from "./UserApi";
+import { ErrorResponse } from "react-router-dom";
 
 export interface User {
   _id: string;
@@ -43,3 +46,21 @@ export const registerValidationSchema: Yup.Schema<RegisterRequest> = Yup.object(
   email: Yup.string().email(errorMessage.email).required(errorMessage.required),
   password: Yup.string().required(errorMessage.required),
 });
+
+export const useLoginUser = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: loginRequest,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["USERS"] }),
+  });
+};
+
+export const useRegisterUser = (): UseMutationResult<boolean, ErrorResponse, RegisterRequest, unknown> => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: registerUser,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["USERS"] }),
+  });
+};
