@@ -20,23 +20,6 @@ export const CategoryList = ({ display }: CategoryListProps) => {
   const { data } = useCategories();
   const categories = data ?? [];
 
-  // const [categories, setCategories] = useState<Category[]>([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API + "categories"}`)
-  //     .then((res) => {
-  //       setCategories(res.data);
-  //     })
-  //     .catch((err) => {
-  //       throw new Error(err);
-  //     });
-  // }, []);
-
-  // const filteredCategories = categoryName
-  //   ? category.filter((el) => el.name === categoryName)
-  //   : category;
-
   return (
     <div
       className={`${styles.categoryContainer} ${
