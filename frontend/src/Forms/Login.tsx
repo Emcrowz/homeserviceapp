@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../Router/RouterConsts";
 
@@ -10,21 +10,33 @@ import { LoginRequest, loginValidationSchema } from "../Components/User/User";
 import { AxiosError } from "axios";
 import { FormikField } from "../Components/Common/FormikField";
 import { loginRequest } from "../Components/User/UserApi";
+import debounce from "lodash.debounce";
 
 export const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(UserContext);
 
-  const handleSubmit = async (formValues: LoginRequest) => {
-    try {
-      const res = await loginRequest(formValues);
-      login(res);
-      navigate(ROUTES.HOME);
-    } catch (err) {
-      const errorMessage = err as AxiosError<{ message: string }>;
-      setError(errorMessage.response?.data.message ?? "");
-    }
+  const debouncedLogin = useCallback(
+    debounce(async (formValues: LoginRequest) => {
+      try {
+        const res = await loginRequest(formValues);
+        login(res);
+        navigate(ROUTES.HOME);
+      } catch (error) {
+        const errorMessage = error as AxiosError<{ message: string }>;
+        setError(errorMessage.response?.data.message ?? "");
+      }
+    }, 300),
+    [loginRequest, login, navigate],
+  );
+  useEffect(() => {
+    return () => {
+      debouncedLogin.cancel();
+    };
+  }, [debouncedLogin]);
+  const handleSubmit = (formValues: LoginRequest) => {
+    debouncedLogin(formValues);
   };
 
   const loginInitialValues: LoginRequest = {
@@ -45,23 +57,6 @@ export const Login = () => {
           <div className={styles.field}>
             <FormikField name="password" type="password" placeholder="Password" />
           </div>
-
-          {/* <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className={styles.input}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className={styles.input}
-          /> */}
           <Button type="submit" styleType="small">
             Sign In
           </Button>

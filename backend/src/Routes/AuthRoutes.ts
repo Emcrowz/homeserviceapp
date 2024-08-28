@@ -28,7 +28,7 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Please provide email and password." });
     }
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("+password");
 
     if (!user || !(await user.isCorrectPassword(password))) {
       return res.status(401).json({ message: "Incorrect email or password." });
@@ -37,8 +37,10 @@ router.post("/login", async (req, res) => {
     const token = generateToken({ id: user._id });
 
     const userWithoutPassword = await User.findById(user._id).select("-password");
+
     return res.status(200).json({ status: "success", token, user: userWithoutPassword });
   } catch (err) {
+    console.error("Error during login:", err);
     return res.status(500).json({ message: "Error attempting to log in.", error: (err as Error).message });
   }
 });
