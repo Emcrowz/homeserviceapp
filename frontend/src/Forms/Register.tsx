@@ -54,30 +54,6 @@ export const Register = () => {
           <div className={styles.field}>
             <FormikField name="password" type="password" placeholder="Password" />
           </div>
-          {/* <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          className={styles.input}
-          />
-          <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          className={styles.input}
-          />
-          <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className={styles.input}
-          /> */}
           <Button type="submit" styleType="small">
             Register
           </Button>
