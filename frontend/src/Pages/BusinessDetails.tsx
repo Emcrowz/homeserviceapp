@@ -35,7 +35,7 @@ export const BusinessDetails = () => {
     <div className={styles.businessDetails}>
       <div className={styles.businessHero}>
         <img className={styles.businessHeroImg} src="" />
-        <div>
+        <div className={styles.businessHeroLeft}>
           <p>{business?.category}</p>
           <p>{business?.name}</p>
           <p>{business?.address}</p>

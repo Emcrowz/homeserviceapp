@@ -20,21 +20,8 @@ export const BusinessList = ({ categoryName, listStyle }: BusinessListProps) => 
   const { data } = useBusinesses();
   const businesses = data ?? [];
 
-  // const [businesses, setBusinesses] = useState<Business[]>([]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`${API + "businesses"}`)
-  //     .then((res) => {
-  //       setBusinesses(res.data);
-  //     })
-  //     .catch((err) => {
-  //       throw new Error(err);
-  //     });
-  // }, []);
-
   const filteredBusinesses = categoryName
-    ? businesses.filter((business) => business.category === categoryName)
+    ? businesses.filter((business) => business.category.toLocaleLowerCase() === categoryName)
     : businesses;
 
   return (

@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/category/:category", async (req, res) => {
+router.get("/services/:category", async (req, res) => {
   try {
     return res.status(200).json(
       await Business.find({

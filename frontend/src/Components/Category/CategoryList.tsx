@@ -31,7 +31,7 @@ export const CategoryList = ({ display }: CategoryListProps) => {
       }`}
     >
       {categories.map((category) => (
-        <Link to={`/service/${category.name.toLowerCase()}`}>
+        <Link to={`/services/${category.name.toLowerCase()}`}>
           <CategoryItem category={category} path={`/service/${category.name.toLowerCase()}`} />
         </Link>
       ))}
