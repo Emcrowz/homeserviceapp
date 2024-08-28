@@ -12,9 +12,6 @@ export const CategoryItem = ({ category, path }: CategoryItemProps) => {
 
   return (
     <div className={styles.categoryItem}>
-      {/* {category.url.length > 0 && (
-        <img src={category.url} alt={category.name} className={styles.image} />
-      )} */}
       <div className={styles.infoContainer} onClick={() => navigate(path)}>
         <h3 className={styles.name}>{category.name}</h3>
       </div>
