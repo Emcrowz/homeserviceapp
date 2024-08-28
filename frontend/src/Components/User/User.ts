@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult, useQueryClient } from "@tanstack/react-query";
 import * as Yup from "yup";
-import { loginUser, registerUser } from "./UserApi";
+import { loginRequest, registerUser } from "./UserApi";
 import { ErrorResponse } from "react-router-dom";
 
 export interface User {
@@ -51,7 +51,7 @@ export const useLoginUser = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: loginUser,
+    mutationFn: loginRequest,
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["USERS"] }),
   });
 };
