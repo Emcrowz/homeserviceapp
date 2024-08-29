@@ -3,7 +3,7 @@ import styles from "./Avatar.module.css";
 
 interface AvatarProps {
   user: { name: string };
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export const Avatar: React.FC<AvatarProps> = ({ user, onClick }) => {
