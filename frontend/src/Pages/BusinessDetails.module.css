@@ -1,0 +1,23 @@
+.businessDetails {
+  margin-top: 2em;
+}
+
+.businessHero {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 1px solid #fff;
+}
+
+.businessHeroLeft {
+  text-align: left;
+}
+
+.businessHeroRight {
+  text-align: right;
+}
+
+.details {
+  text-align: left;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
