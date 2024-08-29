@@ -11,8 +11,15 @@ interface BusinessItemProps {
 export const BusinessItem = ({ business, itemStyle }: BusinessItemProps) => {
   return (
     <Link to={`/details/${business._id}`}>
-      {itemStyle === "suggestions" ? (
-        <div className={styles.suggestions}></div>
+      {itemStyle === "suggestion" ? (
+        <div className={styles.suggestions}>
+          {business.imageUrls.length && (
+            <img src={business.imageUrls[0]} alt={business.name} className={styles.image} />
+          )}
+          <h3 className={styles.name}>{business.name}</h3>
+          <p className={styles.contactPerson}>{business.contactPerson}</p>
+          <p className={styles.address}>{business.address}</p>
+        </div>
       ) : (
         <div className={styles.card}>
           {business.imageUrls.length && (

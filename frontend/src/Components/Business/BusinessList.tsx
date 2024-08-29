@@ -21,7 +21,7 @@ export const BusinessList = ({ categoryName, listStyle }: BusinessListProps) => 
   const businesses = data ?? [];
 
   const filteredBusinesses = categoryName
-    ? businesses.filter((business) => business.category.toLocaleLowerCase() === categoryName)
+    ? businesses.filter((business) => business.category.toLowerCase() === categoryName.toLowerCase())
     : businesses;
 
   return (
