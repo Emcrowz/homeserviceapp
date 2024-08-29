@@ -10,40 +10,27 @@ import { LoginRequest, loginValidationSchema } from "../Components/User/User";
 import { AxiosError } from "axios";
 import { FormikField } from "../Components/Common/FormikField";
 import { loginRequest } from "../Components/User/UserApi";
-import debounce from "lodash.debounce";
 
 export const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useContext(UserContext);
 
-  const debouncedLogin = useCallback(
-    debounce(async (formValues: LoginRequest) => {
-      try {
-        const res = await loginRequest(formValues);
-        login(res);
-        navigate(ROUTES.HOME);
-      } catch (error) {
-        const errorMessage = error as AxiosError<{ message: string }>;
-        setError(errorMessage.response?.data.message ?? "");
-      }
-    }, 300),
-    [loginRequest, login, navigate],
-  );
-  useEffect(() => {
-    return () => {
-      debouncedLogin.cancel();
-    };
-  }, [debouncedLogin]);
-  const handleSubmit = (formValues: LoginRequest) => {
-    debouncedLogin(formValues);
+  const handleSubmit = async (formValues: LoginRequest) => {
+    try {
+      const res = await loginRequest(formValues);
+      login(res);
+      navigate(ROUTES.HOME);
+    } catch (error) {
+      const errorMessage = error as AxiosError<{ message: string }>;
+      setError(errorMessage.response?.data.message ?? "");
+    }
   };
 
   const loginInitialValues: LoginRequest = {
     email: "",
     password: "",
   };
-
   return (
     <div className={styles.container}>
       <Formik initialValues={loginInitialValues} validationSchema={loginValidationSchema} onSubmit={handleSubmit}>
