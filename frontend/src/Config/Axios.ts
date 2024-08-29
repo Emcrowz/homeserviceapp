@@ -8,13 +8,12 @@ const config: AxiosRequestConfig = {
 
 export const axiosInstance = axios.create(config);
 
-export default axiosInstance.interceptors.request.use(
-  async (config) => {
+axiosInstance.interceptors.request.use(
+  (config) => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const parsedToken = JSON.parse(token);
-      config.headers.Authorization = `Bearer ${parsedToken}`;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },
@@ -22,3 +21,5 @@ export default axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
+export default axiosInstance;

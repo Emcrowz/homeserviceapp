@@ -27,7 +27,7 @@ export const Login = () => {
         const errorMessage = error as AxiosError<{ message: string }>;
         setError(errorMessage.response?.data.message ?? "");
       }
-    }, 300),
+    }, 1000),
     [loginRequest, login, navigate],
   );
   useEffect(() => {
