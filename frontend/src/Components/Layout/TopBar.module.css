@@ -4,3 +4,20 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.userSection {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  position: relative;
+}
+
+.userName {
+  font-size: 1rem;
+  color: white;
+}
+
+.avatarDropdownContainer {
+  position: relative;
+  display: inline-block;
+}
