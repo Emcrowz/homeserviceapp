@@ -10,7 +10,9 @@ export const UserContext = createContext<{
 }>({
   user: null,
   isLoggedIn: false,
-  login: () => {},
+  login: () => {
+    console.log("login action");
+  },
   logout: () => {},
 });
 
