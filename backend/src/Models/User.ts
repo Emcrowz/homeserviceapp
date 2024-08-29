@@ -1,4 +1,3 @@
-// Schema for User. An Example to keep for reference.
 import mongoose, { Types } from "mongoose";
 import bcrypt from "bcryptjs";
 
@@ -31,8 +30,9 @@ userSchema.pre<IUser>("save", async function (next) {
   next();
 });
 
-userSchema.methods.isCorrectPassword = function (password: string) {
-  return bcrypt.compare(password, this.password);
+userSchema.methods.isCorrectPassword = async function (password: string) {
+  const bcryptCompare = await bcrypt.compare(password, this.password);
+  return bcryptCompare;
 };
 
 const User = mongoose.model<IUser>("User", userSchema);

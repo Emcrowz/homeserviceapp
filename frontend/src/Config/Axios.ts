@@ -8,7 +8,7 @@ const config: AxiosRequestConfig = {
 
 export const axiosInstance = axios.create(config);
 
-export default axiosInstance.interceptors.request.use(
+axiosInstance.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
 
@@ -21,3 +21,5 @@ export default axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   },
 );
+
+export default axiosInstance;
