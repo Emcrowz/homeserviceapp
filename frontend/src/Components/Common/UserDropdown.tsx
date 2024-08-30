@@ -22,7 +22,7 @@ export const UserDropdown: React.FC = () => {
   };
 
   const handleMyOrders = () => {
-    navigate(ROUTES.MY_ORDERS);
+    navigate(ROUTES.USER_BOOKINGS);
     setIsDropdownOpen(false);
   };
 
