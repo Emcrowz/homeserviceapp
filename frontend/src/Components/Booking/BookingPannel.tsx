@@ -37,17 +37,26 @@ export const BookingPannel = ({ bookingBusiness, bookingUser, workTimes, handleB
 
   // For API Post operation
   const handleSubmitReservation = () => {
-    if (!timePicked) return;
+    if (!timePicked) return; // Date not selected? return.
+
+    const reservationTimeSelected = [timePicked?.getHours(), timePicked?.getMinutes()];
+    console.log(reservationTimeSelected);
 
     try {
-      const newBooking = {
-        businessId: bookingBusiness,
-        userId: bookingUser?._id,
-        userEmail: bookingUser?.email,
-        reservationTime: [timePicked?.getHours(), timePicked?.getMinutes()],
-      };
-      postBooking(newBooking);
-      // console.log(newBooking);
+      // Any selected time will result in true of this. If not selected - values by defualt will be both zeros.
+      if (reservationTimeSelected[0] !== 0 && reservationTimeSelected[1] !== 0) {
+        const newBooking = {
+          businessId: bookingBusiness,
+          userId: bookingUser?._id,
+          userEmail: bookingUser?.email,
+          reservationTime: reservationTimeSelected,
+        };
+        postBooking(newBooking);
+        // console.log(newBooking);
+      } else {
+        console.log(reservationTimeSelected);
+        return;
+      }
     } catch (err) {
       throw new Error();
     }
