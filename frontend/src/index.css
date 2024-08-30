@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --primary-color: #646cff;
+  --primary-color-hover: #535bf2;
 }
 
 #root {
