@@ -6,7 +6,9 @@
 }
 
 .searchInput {
-  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+  transition:
+    box-shadow 100ms ease-in,
+    border 100ms ease-in,
     background-color 100ms ease-in;
   color: rgb(14, 14, 16);
   padding: 1rem;
@@ -19,13 +21,24 @@
     border-color: #ccc;
   }
 }
-
+.Button {
+  padding: 0.75rem 1.25rem;
+  background-color: #8056eb;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .input {
   font-size: 14px;
   border-radius: 6px;
   line-height: 1.5;
   padding: 5px 10px;
-  transition: box-shadow 100ms ease-in, border 100ms ease-in,
+  transition:
+    box-shadow 100ms ease-in,
+    border 100ms ease-in,
     background-color 100ms ease-in;
   border: 2px solid #dee1e2;
   color: rgb(14, 14, 16);
@@ -40,4 +53,7 @@
     border-color: #9147ff;
     background: #fff;
   }
+}
+.ciSearchIcon {
+  font-size: 24px;
 }

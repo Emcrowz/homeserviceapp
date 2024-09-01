@@ -1,3 +1,4 @@
+import React from "react";
 import { Category } from "./Category";
 import { CategoryItem } from "./CategoryItem";
 import { Link } from "react-router-dom";
@@ -16,9 +17,13 @@ const useCategories = () => {
     queryFn: fetchCategories,
   });
 };
-export const CategoryList = ({ display }: CategoryListProps) => {
-  const { data } = useCategories();
+
+export const CategoryList: React.FC<CategoryListProps> = ({ display }) => {
+  const { data, isLoading, isError } = useCategories();
   const categories = data ?? [];
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading categories.</div>;
 
   return (
     <div
@@ -31,8 +36,8 @@ export const CategoryList = ({ display }: CategoryListProps) => {
       }`}
     >
       {categories.map((category) => (
-        <Link to={`/services/${category.name.toLowerCase()}`} key={category.name}>
-          <CategoryItem category={category} path={`/service/${category.name.toLowerCase()}`} />
+        <Link className={styles.link} to={`/services/${category.name.toLowerCase()}`} key={category.name}>
+          <CategoryItem category={category} path={`/services/${category.name.toLowerCase()}`} />
         </Link>
       ))}
     </div>

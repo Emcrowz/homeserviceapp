@@ -1,11 +1,30 @@
 .categoryItem {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+  width: 160px;
+  height: 120px;
   display: flex;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2eefd !important;
+  color: #9977ef;
+  font-size: 1.1rem;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-4px);
     box-shadow: rgba(86, 20, 208, 0.25) 5px 5px 15px;
   }
+}
+.categoryName {
+  text-decoration: none;
+  font-weight: 500;
+}
+.icon {
+  width: 48px;
+  height: 48px;
 }

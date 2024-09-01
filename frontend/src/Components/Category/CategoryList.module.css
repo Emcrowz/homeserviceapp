@@ -1,16 +1,9 @@
 .categoryContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-}
-
-.categoriesVertical {
-  display: block;
-}
-
-.categoriesHorizontal {
   display: flex;
-  justify-content: space-around;
+  margin-top: 4rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .categoriesNone {
@@ -19,4 +12,7 @@
 
 .categories a {
   padding: 1rem;
+}
+.link {
+  text-decoration: none;
 }

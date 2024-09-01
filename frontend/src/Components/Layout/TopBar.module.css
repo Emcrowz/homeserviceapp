@@ -1,8 +1,8 @@
 .topbar {
-  height: 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 2rem 4rem;
 }
 
 .userSection {
@@ -15,4 +15,15 @@
 .userName {
   font-size: 1rem;
   color: white;
+}
+.logoAndNavigationContainer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.loginButton {
+  background-color: #8056eb;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
 }

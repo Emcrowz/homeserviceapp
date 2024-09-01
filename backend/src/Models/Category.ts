@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 
 interface ICategory {
   name: string;
-  bgColor: object;
-  icon: object;
+  bgColor: { hex: string };
+  icon: { url: string };
+  order: number;
 }
 
 const categorySchema = new mongoose.Schema<ICategory>({
@@ -20,9 +21,10 @@ const categorySchema = new mongoose.Schema<ICategory>({
   icon: {
     url: {
       type: String,
-      default: "http://example.com/default-icon.png",
+      default: "FaBucket",
     },
   },
+  order: { type: Number, required: true },
 });
 
 const Category = mongoose.model<ICategory>("Category", categorySchema);

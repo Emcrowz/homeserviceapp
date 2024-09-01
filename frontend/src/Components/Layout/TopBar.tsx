@@ -14,15 +14,20 @@ export const TopBar: React.FC = () => {
 
   return (
     <div className={styles.topbar}>
-      <Logo />
-      <Navigation />
+      <div className={styles.logoAndNavigationContainer}>
+        <Logo />
+        <Navigation />
+      </div>
+
       {user ? (
         <div className={styles.userSection}>
           <span className={styles.userName}>Hello, {user.name}</span>
           <UserDropdown />
         </div>
       ) : (
-        <Button onClick={() => navigate(ROUTES.LOGIN)}>Login / Sign Up</Button>
+        <Button className={styles.loginButton} onClick={() => navigate(ROUTES.LOGIN)}>
+          Login / Sign Up
+        </Button>
       )}
     </div>
   );

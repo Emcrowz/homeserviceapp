@@ -1,6 +1,6 @@
 .heroContainer {
   padding-top: 2rem;
-  place-items: center;
+  text-align: center;
 }
 
 .title {
@@ -12,4 +12,7 @@
   color: #a8a8a8;
   font-size: 1.5rem;
   padding: 1rem;
+}
+.highlightedText {
+  color: #8056eb;
 }

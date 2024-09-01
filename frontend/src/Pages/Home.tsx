@@ -7,10 +7,10 @@ export const Home = () => {
   return (
     <div>
       <div className={styles.heroContainer}>
-        <h2 className={styles.title}>Find Home Service/Repair Near You</h2>
-        <span className={styles.subtitle}>
-          Explore Best Home Services & Repair near you
-        </span>
+        <h2 className={styles.title}>
+          Find Home <span className={styles.highlightedText}>Service/Repair</span> <br /> Near You
+        </h2>
+        <span className={styles.subtitle}>Explore Best Home Services & Repair near you</span>
       </div>
       <Search />
       <CategoryList display="horizontal" />
