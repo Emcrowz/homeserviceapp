@@ -21,8 +21,8 @@ export const UserDropdown: React.FC = () => {
     setIsDropdownOpen(false);
   };
 
-  const handleMyOrders = () => {
-    navigate(ROUTES.MY_ORDERS);
+  const handleMyBookings = () => {
+    navigate(ROUTES.USER_BOOKINGS);
     setIsDropdownOpen(false);
   };
 
@@ -50,8 +50,8 @@ export const UserDropdown: React.FC = () => {
         <div className={styles.dropdownMenu} onClick={(e) => e.stopPropagation()}>
           <b className={styles.myAccount}>My Account</b>
           <div className={styles.dropdownOptions}>
-            <button className={styles.dropdownItem} onClick={handleMyOrders}>
-              My Orders
+            <button className={styles.dropdownItem} onClick={handleMyBookings}>
+              My Bookings
             </button>
             <button className={styles.dropdownItem} onClick={handleLogout}>
               Logout

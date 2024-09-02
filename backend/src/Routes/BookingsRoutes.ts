@@ -12,9 +12,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/user/:email", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    return res.json(await Booking.find({ userEmail: req.params.email }));
+    return res.json(await Booking.find({ userId: req.params.id }));
   } catch (err) {
     return res.status(500).json({ message: "Error fetching bookings for the user", error: err });
   }
