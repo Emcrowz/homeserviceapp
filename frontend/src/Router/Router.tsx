@@ -9,6 +9,7 @@ import { RootLayout } from "../Components/Layout/RootLayout.tsx";
 import { Register } from "../Forms/Register.tsx";
 import { BusinessDetails } from "../Pages/BusinessDetails.tsx";
 import { ServicesFiltered } from "../Pages/ServicesFiltered.tsx";
+import { UserBookings } from "../Pages/UserBookings.tsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: ROUTES.ABOUT_US,
         element: <AboutUs />,
+      },
+      {
+        path: ROUTES.USER_BOOKINGS,
+        element: <UserBookings />,
       },
       {
         path: ROUTES.LOGIN,

@@ -5,3 +5,6 @@ export const postBooking = async (newBooking: Booking): Promise<Booking> =>
   (await axiosInstance.post("/bookings", newBooking)).data;
 
 export const fetchBookings = async (): Promise<Booking[]> => (await axiosInstance.get("/bookings")).data;
+
+export const fetchBookingsOfUser = async (userId: string): Promise<Booking[]> =>
+  await axiosInstance.get(`/bookings/${userId}`);
