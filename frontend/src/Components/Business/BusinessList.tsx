@@ -1,23 +1,25 @@
 import { Category } from "../Category/Category";
 import { BusinessItem } from "./BusinessItem";
 import { useQuery } from "@tanstack/react-query";
-import { fetchBusinesses } from "./BusinessApi";
+import { fetchBusinesses, fetchFeaturedBusinesses } from "./BusinessApi";
 import styles from "./BusinessList.module.css";
 
 interface BusinessListProps {
   categoryName?: Category["name"];
   listStyle?: string;
+  showFeatured?: boolean;
+  customClassName?: string;
 }
 
-const useBusinesses = () => {
+const useBusinesses = (showFeatured: boolean) => {
   return useQuery({
-    queryKey: ["BUSINESS"],
-    queryFn: fetchBusinesses,
+    queryKey: ["BUSINESS", showFeatured],
+    queryFn: showFeatured ? fetchFeaturedBusinesses : fetchBusinesses,
   });
 };
 
-export const BusinessList = ({ categoryName, listStyle }: BusinessListProps) => {
-  const { data } = useBusinesses();
+export const BusinessList = ({ categoryName, listStyle, showFeatured = false, customClassName }: BusinessListProps) => {
+  const { data } = useBusinesses(showFeatured);
   const businesses = data ?? [];
 
   const filteredBusinesses = categoryName
@@ -25,13 +27,9 @@ export const BusinessList = ({ categoryName, listStyle }: BusinessListProps) => 
     : businesses;
 
   return (
-    <div className={`${listStyle === "suggestions" ? styles[`${listStyle}`] : styles[`container`]}`}>
+    <div className={customClassName ? customClassName : styles.container}>
       {filteredBusinesses.map((business) => (
-        <BusinessItem
-          key={business._id}
-          business={business}
-          itemStyle={listStyle === "suggestions" ? "suggestion" : null}
-        />
+        <BusinessItem key={business._id} business={business} />
       ))}
     </div>
   );

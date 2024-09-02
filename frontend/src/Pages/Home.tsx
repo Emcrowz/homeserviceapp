@@ -13,8 +13,8 @@ export const Home = () => {
         <span className={styles.subtitle}>Explore Best Home Services & Repair near you</span>
       </div>
       <Search />
-      <CategoryList display="horizontal" />
-      <BusinessList />
+      <CategoryList display="horizontal" context="default" />
+      <BusinessList showFeatured={true} />
     </div>
   );
 };

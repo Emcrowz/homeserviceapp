@@ -20,9 +20,25 @@
     background: #fff;
   }
 }
-
+.inputField {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  line-height: 1.5;
+  color: black;
+  border-radius: 6px;
+  border: 2px solid #dee1e2;
+  box-sizing: border-box;
+  transition:
+    box-shadow 100ms ease-in,
+    border 100ms ease-in,
+    background-color 100ms ease-in;
+}
 .error {
   font-size: 0.8rem;
   color: red;
   margin-top: 0.5rem;
+}
+.singleInputFieldContainer {
+  width: 100%;
+  margin-bottom: 1rem;
 }

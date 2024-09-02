@@ -50,19 +50,19 @@ export const Login = () => {
         <Form className={styles.form}>
           <h2 className={styles.title}>Login</h2>
           {error && <p className={styles.error}>{error}</p>}
-          <div className={styles.field}>
+          <div className={styles.inputsContainer}>
             <FormikField name="email" type="email" placeholder="Email" />
-          </div>
-
-          <div className={styles.field}>
             <FormikField name="password" type="password" placeholder="Password" />
           </div>
-          <Button type="submit" styleType="small">
+
+          <Button type="submit" styleType="small" className={styles.loginButtonInForm}>
             Sign In
           </Button>
           <div className={styles.link}>
-            <h3>Not a user?</h3>
-            <Link to={ROUTES.REGISTER}>Register here</Link>
+            <span>Not a user? </span>
+            <Link className={styles.registerLink} to={ROUTES.REGISTER}>
+              Register here
+            </Link>
           </div>
         </Form>
       </Formik>
