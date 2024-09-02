@@ -1,30 +1,22 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css"; // built-in calendar style
 import { User } from "../User/User";
 import styles from "./BookingPannel.module.css";
 import { Button } from "../Common/Button";
-import { fetchBookings, postBooking } from "./BookingApi";
-import { useQuery } from "@tanstack/react-query";
 import "./CalendarStyles.css";
+import { useBookings } from "./Hooks/useBookings";
+import { postBooking } from "./BookingApi";
 
 interface BookingPannelProps {
   bookingBusiness: string;
   bookingUser: User;
-  officialWorkTime: Array<number>;
-  workTimes: Array<Array<number>>;
+  officialWorkTime: number[];
+  workTimes: number[][];
   handleBooking: () => void;
 }
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
-
-const useBookings = () => {
-  return useQuery({
-    queryKey: ["BOOKINGS"],
-    queryFn: fetchBookings,
-  });
-};
 
 export const BookingPannel = ({ bookingBusiness, bookingUser, workTimes, handleBooking }: BookingPannelProps) => {
   const [datePicked] = useState<Value>(); // Specific to the 'react-calendar'
@@ -78,17 +70,6 @@ export const BookingPannel = ({ bookingBusiness, bookingUser, workTimes, handleB
       <div>
         {bookingUser?.name} | Booking service: {bookingBusiness}
       </div>
-      {/* <span>Currently Booked Services:</span>
-      <div style={{ margin: "0.5rem 0" }}>
-        {currentBookings.map(
-          (booking) =>
-            bookingBusiness === booking.businessId && (
-              <p>
-                {booking?.userEmail} | {booking?.reservationDate.toLocaleString()}
-              </p>
-            ),
-        )}
-      </div> */}
       <Calendar
         minDetail="year"
         activeStartDate={new Date()}
@@ -107,7 +88,7 @@ export const BookingPannel = ({ bookingBusiness, bookingUser, workTimes, handleB
         )}
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-around", textAlign: "center" }}>
+      <div className={styles.panelButtons}>
         <Button type="submit" onClick={handleSubmitReservation}>
           Submit reservation date
         </Button>

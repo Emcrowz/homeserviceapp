@@ -5,8 +5,7 @@ interface IBooking {
   businessId: Types.ObjectId;
   userId: Types.ObjectId;
   userEmail: string;
-  reservationTime: Array<number>;
-  // time: string;
+  reservationTime: number[];
   status: "Cancelled" | "Pending" | "Confirmed";
 }
 
@@ -16,10 +15,6 @@ const bookingSchema = new mongoose.Schema<IBooking>(
       type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
-    // time: {
-    //   type: String,
-    //   required: [true, "field is required. e.g. 14:00"], // Time must be provided
-    // },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

@@ -13,7 +13,7 @@ import { UserContext } from "../Components/Context/UserContext";
 
 export const BusinessDetails = () => {
   const [business, setBusiness] = useState<Business | null>();
-  const [isBooking, setIsBooking] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const { id: businessId } = useParams();
   const { user } = useContext(UserContext);
 
@@ -25,7 +25,7 @@ export const BusinessDetails = () => {
   //   };
 
   const handleBooking = () => {
-    setIsBooking(!isBooking);
+    setIsBookingOpen(!isBookingOpen);
   };
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export const BusinessDetails = () => {
         </div>
       </div>
       <div>
-        {isBooking && (
+        {isBookingOpen && (
           <BookingPannel
             bookingBusiness={business?._id}
             bookingUser={user}
@@ -88,7 +88,7 @@ export const BusinessDetails = () => {
           </div>
         </div>
         <div>
-          {user && !isBooking && <Button onClick={handleBooking}>Book Appointment</Button>}
+          {user && !isBookingOpen && <Button onClick={handleBooking}>Book Appointment</Button>}
           <p>
             <strong>Similar Businesses</strong>
           </p>

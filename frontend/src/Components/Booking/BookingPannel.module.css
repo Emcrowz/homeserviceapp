@@ -18,3 +18,9 @@
   border: 1px solid #000;
   border-radius: 2rem;
 }
+
+.pannelButtons {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
