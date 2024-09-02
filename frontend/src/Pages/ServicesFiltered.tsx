@@ -13,7 +13,7 @@ export const ServicesFiltered = () => {
           <CategoryList layout="categories" />
         </div>
         <div className={styles.businessesWrapper}>
-          <BusinessList categoryName={category} customClassName={styles.bussinessListInServicePageContainer} />
+          <BusinessList categoryName={category} customClassName={styles.bussinessListGrid} />
         </div>
       </div>
     </div>
