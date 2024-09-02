@@ -1,7 +1,10 @@
 .container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
   gap: 1rem;
+  padding: 1rem;
 }
 
 .suggestions {

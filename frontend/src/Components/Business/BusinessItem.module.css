@@ -1,10 +1,9 @@
 .card {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border-radius: 1rem;
-  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -62,6 +61,7 @@
 }
 .linkContainer {
   text-decoration: none;
+  width: 100%;
 }
 .bookButton {
   background-color: #8056eb;
