@@ -7,4 +7,6 @@ export interface Business {
   contactPerson: string;
   email: string;
   imageUrls: string[];
+  officialWorkingTime: number[];
+  workTimes: number[][];
 }
