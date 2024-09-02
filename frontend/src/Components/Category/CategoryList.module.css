@@ -1,11 +1,3 @@
-.categoryContainer {
-  display: flex;
-  margin-top: 4rem;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
 .categoriesNone {
   display: none;
 }
@@ -13,6 +5,20 @@
 .categories a {
   padding: 1rem;
 }
+
 .link {
   text-decoration: none;
+}
+
+.categoriesContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.categoriesLayout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }

@@ -1,6 +1,40 @@
 .servicesContainer {
   margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+.filteredServicesPageContainer {
+  padding: 4rem;
+  display: flex;
+  gap: 1rem;
+}
+.servicesFilteredPageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.flexContainer {
+  display: flex;
+  width: 100%;
+  gap: 3rem;
+  max-height: 500px;
+}
+.categoriesWrapper {
+  width: 100%;
+  display: flex;
+  flex: 0 0 30%;
+}
 
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+.businessesWrapper {
+  display: flex;
+  width: 100%;
+  flex: 0 0 70%;
+}
+.bussinessListInServicePageContainer {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
 }

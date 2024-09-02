@@ -54,12 +54,14 @@ export const Register = () => {
           <div className={styles.field}>
             <FormikField name="password" type="password" placeholder="Password" />
           </div>
-          <Button type="submit" styleType="small">
+          <Button type="submit" styleType="small" className={styles.buttonInRegisterForm}>
             Register
           </Button>
           <div className={styles.link}>
-            <h3>Already a user?</h3>
-            <Link to={ROUTES.LOGIN}>Login here</Link>
+            <span>Already a user? </span>
+            <Link className={styles.linkToLogin} to={ROUTES.LOGIN}>
+              Login here
+            </Link>
           </div>
         </Form>
       </Formik>

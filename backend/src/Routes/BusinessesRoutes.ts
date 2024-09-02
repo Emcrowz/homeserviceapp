@@ -6,8 +6,6 @@ import Category from "../Models/Category";
 
 const router = express.Router();
 
-// == Business router
-// Get requests
 router.get("/", async (req, res) => {
   try {
     return res.status(200).json(await Business.find());
@@ -15,7 +13,15 @@ router.get("/", async (req, res) => {
     return res.status(500).json({ message: "Error fetching businesses", error: err });
   }
 });
+router.get("/featured", async (req, res) => {
+  try {
+    const featuredBusinesses = await Business.find({ featured: true });
 
+    return res.status(200).json(featuredBusinesses);
+  } catch (err) {
+    return res.status(500).json({ message: "Error fetching featured businesses", error: err });
+  }
+});
 router.get("/services/:category", async (req, res) => {
   try {
     return res.status(200).json(
@@ -57,7 +63,6 @@ router.get("/:id/bookings/date/:date", async (req, res) => {
   }
 });
 
-// Post requests
 router.post("/", AuthMiddleware, async (req, res) => {
   const business = req.body;
 

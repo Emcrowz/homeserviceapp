@@ -1,12 +1,16 @@
 .container {
   height: 100%;
   padding-top: 8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  background-color: #727272;
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: rgba(86, 20, 208, 0.25) 5px 5px 15px;
@@ -27,6 +31,9 @@
   margin-top: 2rem;
   text-align: center;
 }
+.field {
+  width: 100%;
+}
 
 .signUp {
   color: var(--primary-color);
@@ -37,4 +44,17 @@
   font-size: 0.9rem;
   color: red;
   margin-bottom: 1rem;
+}
+.inputsContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.loginButtonInForm {
+  background-color: #8056eb;
+}
+.registerLink {
+  text-decoration: none;
+  color: #8056eb;
+  font-weight: 500;
 }

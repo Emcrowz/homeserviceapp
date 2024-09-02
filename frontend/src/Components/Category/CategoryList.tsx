@@ -1,14 +1,14 @@
 import React from "react";
-import { Category } from "./Category";
 import { CategoryItem } from "./CategoryItem";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCategories } from "./CategoryApi";
 import styles from "./CategoryList.module.css";
+import classNames from "classnames";
 
 interface CategoryListProps {
-  display?: string;
-  categoryName?: Category["name"];
+  layout?: "main" | "categories";
+  className?: string;
 }
 
 const useCategories = () => {
@@ -18,7 +18,7 @@ const useCategories = () => {
   });
 };
 
-export const CategoryList: React.FC<CategoryListProps> = ({ display }) => {
+export const CategoryList: React.FC<CategoryListProps> = ({ layout = "main", className }) => {
   const { data, isLoading, isError } = useCategories();
   const categories = data ?? [];
 
@@ -27,17 +27,20 @@ export const CategoryList: React.FC<CategoryListProps> = ({ display }) => {
 
   return (
     <div
-      className={`${styles.categoryContainer} ${
-        display === "vertical"
-          ? styles.categoriesVertical
-          : display === "horizontal"
-            ? styles.categoriesHorizontal
-            : styles.categoriesNone
-      }`}
+      className={classNames(
+        styles.categoriesContainer,
+        { [styles.categoriesLayout]: layout === "categories" },
+        className,
+      )}
     >
       {categories.map((category) => (
         <Link className={styles.link} to={`/services/${category.name.toLowerCase()}`} key={category.name}>
-          <CategoryItem category={category} path={`/services/${category.name.toLowerCase()}`} />
+          <CategoryItem
+            category={category}
+            path={`/services/${category.name.toLowerCase()}`}
+            layout={layout}
+            className={layout === "categories" ? styles.categoryItemServices : styles.categoryItem}
+          />
         </Link>
       ))}
     </div>

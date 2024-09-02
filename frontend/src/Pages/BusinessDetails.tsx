@@ -1,5 +1,3 @@
-// import { useQuery } from "@tanstack/react-query";
-// import { fetchBusinessById } from "../Components/Business/BusinessApi";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Business } from "../Components/Business/Business";
@@ -12,13 +10,6 @@ import { BusinessList } from "../Components/Business/BusinessList";
 export const BusinessDetails = () => {
   const [business, setBusiness] = useState<Business | null>();
   const { id: businessId } = useParams();
-
-  //   const useBusinessById = () => {
-  //     return useQuery({
-  //       queryKey: ["BUSINESS"],
-  //       queryFn: fetchBusinessById(businessId),
-  //     });
-  //   };
 
   useEffect(() => {
     axios
@@ -59,11 +50,6 @@ export const BusinessDetails = () => {
             <p>
               <strong>Gallery</strong>
             </p>
-            {/* <div>
-              {business.imageUrls.map((url) => (
-                <img src={url} />
-              ))}
-            </div> */}
           </div>
         </div>
         <div>

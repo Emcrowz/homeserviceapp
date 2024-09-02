@@ -6,10 +6,7 @@ import styles from "./Services.module.css";
 export const Services = () => {
   return (
     <div>
-      <div className={styles.servicesContainer}>
-        <CategoryList display="vertical" />
-        <BusinessList />
-      </div>
+      <BusinessList />
     </div>
   );
 };

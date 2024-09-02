@@ -8,6 +8,7 @@ interface IBusiness {
   contactPerson: string;
   email: string;
   imageUrls: string[];
+  featured: boolean;
 }
 
 const businessSchema = new mongoose.Schema<IBusiness>({
@@ -41,14 +42,14 @@ const businessSchema = new mongoose.Schema<IBusiness>({
       message: "Invalid email format",
     },
   },
-  imageUrls: [
-    {
-      url: {
-        type: String,
-        required: true,
-      },
-    },
-  ],
+  imageUrls: {
+    type: [String],
+    required: true,
+  },
+  featured: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Business = mongoose.model<IBusiness>("Business", businessSchema);

@@ -8,8 +8,8 @@ interface FormikFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const FormikField = ({ name, ...props }: FormikFieldProps) => {
   return (
-    <div>
-      <Field name={name} as={InputField} {...props} />
+    <div className={styles.singleInputFieldContainer}>
+      <Field className={styles.inputField} name={name} as={InputField} {...props} />
       <ErrorMessage name={name} component="div" className={styles.error} />
     </div>
   );
