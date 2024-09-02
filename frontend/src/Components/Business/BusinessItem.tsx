@@ -6,14 +6,19 @@ import defaultPicture from "../../Assets/defaultService.svg";
 
 interface BusinessItemProps {
   business: Business;
+  isServicesPage?: boolean;
 }
 
-export const BusinessItem = ({ business }: BusinessItemProps) => {
+export const BusinessItem = ({ business, isServicesPage = false }: BusinessItemProps) => {
   const imageUrl =
     Array.isArray(business.imageUrls) && business.imageUrls.length > 0 ? business.imageUrls[0] : defaultPicture;
 
+  const linkContainerClass = isServicesPage
+    ? `${styles.linkContainer} ${styles.servicesPageLinkContainer}`
+    : styles.linkContainer;
+
   return (
-    <Link to={`/details/${business._id}`} className={styles.linkContainer}>
+    <Link to={`/details/${business._id}`} className={linkContainerClass}>
       <div className={styles.card}>
         <img src={imageUrl} alt={business.name} className={styles.image} />
         <div className={styles.infoContainer}>

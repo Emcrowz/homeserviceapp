@@ -9,6 +9,8 @@ interface BusinessListProps {
   listStyle?: string;
   showFeatured?: boolean;
   customClassName?: string;
+  layoutStyle?: "default" | "three-per-row" | "five-per-row";
+  isServicesPage?: boolean;
 }
 
 const useBusinesses = (showFeatured: boolean) => {
@@ -18,7 +20,14 @@ const useBusinesses = (showFeatured: boolean) => {
   });
 };
 
-export const BusinessList = ({ categoryName, listStyle, showFeatured = false, customClassName }: BusinessListProps) => {
+export const BusinessList = ({
+  categoryName,
+  listStyle,
+  showFeatured = false,
+  customClassName,
+  layoutStyle = "default",
+  isServicesPage = false,
+}: BusinessListProps) => {
   const { data } = useBusinesses(showFeatured);
   const businesses = data ?? [];
 
@@ -26,10 +35,14 @@ export const BusinessList = ({ categoryName, listStyle, showFeatured = false, cu
     ? businesses.filter((business) => business.category.toLowerCase() === categoryName.toLowerCase())
     : businesses;
 
+  const containerClass = `${styles.container} ${
+    layoutStyle === "five-per-row" ? styles.fivePerRowContainer : ""
+  } ${customClassName ?? ""}`;
+
   return (
-    <div className={customClassName ? customClassName : styles.container}>
+    <div className={containerClass.trim()}>
       {filteredBusinesses.map((business) => (
-        <BusinessItem key={business._id} business={business} />
+        <BusinessItem key={business._id} business={business} isServicesPage={isServicesPage} />
       ))}
     </div>
   );

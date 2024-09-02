@@ -12,9 +12,7 @@ export const ServicesFiltered = () => {
         <div className={styles.categoriesWrapper}>
           <CategoryList layout="categories" />
         </div>
-        <div className={styles.businessesWrapper}>
-          <BusinessList categoryName={category} customClassName={styles.bussinessListInServicePageContainer} />
-        </div>
+        <BusinessList categoryName={category} layoutStyle="three-per-row" />
       </div>
     </div>
   );
