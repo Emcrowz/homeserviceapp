@@ -1,17 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styles from "./UserBookings.module.css";
 import { UserContext } from "../Components/Context/UserContext";
 import { ErrorPage } from "./ErrorPage";
 import { Button } from "../Components/Common/Button";
 import { fetchBookings } from "../Components/Booking/BookingApi";
 import { useQuery } from "@tanstack/react-query";
-import { BusinessItemWrapper } from "../Components/Business/BusinessItemWrapper";
+import { DisplayAllUserBookings } from "../Components/Booking/Utils/DisplayAllUserBookings";
+import { DisplayFilteredUserBookings } from "../Components/Booking/Utils/DisplayFilteredUserBookings";
 
 // "Cancelled", "Pending", "Confirmed"
 enum BookingStatus {
   cancelled = "Cancelled",
   pending = "Pending",
   confirmed = "Confirmed",
+  all = "",
 }
 
 const useBookings = () => {
@@ -22,7 +24,7 @@ const useBookings = () => {
 };
 
 export const UserBookings = () => {
-  // const [businesses, setBusinesses] = useState();
+  const [filterBy, setFilterBy] = useState("");
   const { user } = useContext(UserContext);
   const { data } = useBookings();
   const bookings = data ?? [];
@@ -33,16 +35,17 @@ export const UserBookings = () => {
     <div className={styles.container}>
       <h2>My Bookings</h2>
       <div className={styles.bookingsByStatus}>
-        <Button>{BookingStatus.cancelled}</Button>
-        <Button>{BookingStatus.pending}</Button>
-        <Button>{BookingStatus.confirmed}</Button>
+        <Button onClick={() => setFilterBy(BookingStatus.cancelled)}>{BookingStatus.cancelled}</Button>
+        <Button onClick={() => setFilterBy(BookingStatus.pending)}>{BookingStatus.pending}</Button>
+        <Button onClick={() => setFilterBy(BookingStatus.confirmed)}>{BookingStatus.confirmed}</Button>
+        <Button onClick={() => setFilterBy(BookingStatus.all)}>Show all</Button>
       </div>
       <div>
-        {bookings
-          .filter((booking) => booking.userId === user._id)
-          .map((booking) => (
-            <BusinessItemWrapper booking={booking} />
-          ))}
+        {filterBy !== "" ? (
+          <DisplayFilteredUserBookings bookings={bookings} userId={user._id} status={filterBy} />
+        ) : (
+          <DisplayAllUserBookings bookings={bookings} userId={user._id} />
+        )}
       </div>
     </div>
   );
