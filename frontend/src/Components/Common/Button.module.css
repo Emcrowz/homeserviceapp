@@ -1,7 +1,8 @@
 .button {
   padding: 0.75rem 1.25rem;
   background-color: var(--primary-color);
-  color: #ffffff;
+  color: white;
+  background-color: #8056eb;
   border: none;
   border-radius: 8px;
   cursor: pointer;
