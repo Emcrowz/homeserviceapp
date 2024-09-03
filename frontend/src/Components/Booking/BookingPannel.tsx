@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import Calendar from "react-calendar";
 import { User } from "../User/User";
 import styles from "./BookingPannel.module.css";
@@ -28,29 +28,25 @@ export const BookingPannel = ({ bookingBusiness, bookingUser, workTimes, handleB
   const handleTimeSelection = (hours: number, minutes: number) => timePicked?.setHours(hours, minutes, 0);
 
   // For API Post operation
-  const handleSubmitReservation = () => {
+  const handleSubmitReservation = (e: SyntheticEvent) => {
+    e.preventDefault();
     if (!timePicked) return; // Date not selected? return.
 
     const reservationTimeSelected = [timePicked?.getHours(), timePicked?.getMinutes()];
     console.log(reservationTimeSelected);
 
-    try {
-      // Any selected time will result in true of this. If not selected - values by defualt will be both zeros.
-      if (reservationTimeSelected[0] !== 0) {
-        const newBooking = {
-          businessId: bookingBusiness,
-          userId: bookingUser?._id,
-          userEmail: bookingUser?.email,
-          reservationTime: reservationTimeSelected,
-        };
-        postBooking(newBooking);
-        // console.log(newBooking);
-      } else {
-        console.log("failed");
-        return;
-      }
-    } catch (err) {
-      throw new Error();
+    // Any selected time will result in true of this. If not selected - values by defualt will be both zeros.
+    if (reservationTimeSelected[0] !== 0) {
+      const newBooking = {
+        businessId: bookingBusiness,
+        userId: bookingUser?._id,
+        userEmail: bookingUser?.email,
+        reservationTime: reservationTimeSelected,
+      };
+      postBooking(newBooking);
+      handleBooking();
+    } else {
+      return;
     }
   };
 
@@ -88,14 +84,12 @@ export const BookingPannel = ({ bookingBusiness, bookingUser, workTimes, handleB
         )}
       </div>
 
-      <div className={styles.panelButtons}>
+      <form className={styles.panelButtons} method="post" encType="text/plain" autoComplete="off">
         <Button type="submit" onClick={handleSubmitReservation}>
           Submit reservation date
         </Button>
-        <Button onClick={handleBooking} type="submit">
-          Cancel
-        </Button>
-      </div>
+        <Button onClick={handleBooking}>Cancel</Button>
+      </form>
     </div>
   );
 };

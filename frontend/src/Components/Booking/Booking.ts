@@ -3,4 +3,5 @@ export interface Booking {
   userId: string;
   userEmail: string;
   reservationTime: number[];
+  status?: string;
 }
