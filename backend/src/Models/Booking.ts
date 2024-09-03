@@ -7,6 +7,7 @@ interface IBooking {
   userEmail: string;
   reservationTime: number[];
   status: "Cancelled" | "Pending" | "Confirmed";
+  date: Date;
 }
 
 const bookingSchema = new mongoose.Schema<IBooking>(
@@ -40,6 +41,9 @@ const bookingSchema = new mongoose.Schema<IBooking>(
         values: ["Cancelled", "Pending", "Confirmed"],
         message: "{VALUE} is not supported", // Custom message if an unsupported value is provided
       },
+    },
+    date: {
+      type: Date,
     },
   },
   {
