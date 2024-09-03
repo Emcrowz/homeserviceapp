@@ -73,11 +73,11 @@ export const BookingPannel = ({ bookingBusiness, bookingUser, workTimes, handleB
         value={datePicked}
       />
 
-      <div className={styles.workTimeButtons}>
+      <div key={workTimes.join("-")} className={styles.workTimeButtons}>
         {workTimes?.map(
           (workTime) =>
             checkForAvailableBooking(workTime) && (
-              <Button onClick={() => handleTimeSelection(workTime[0], workTime[1])}>
+              <Button key={workTime.join("-")} onClick={() => handleTimeSelection(workTime[0], workTime[1])}>
                 {workTime[0]}:{workTime[1] === 0 ? "00" : workTime[1]}
               </Button>
             ),
