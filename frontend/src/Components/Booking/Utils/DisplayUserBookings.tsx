@@ -11,8 +11,8 @@ export const DisplayUserBookings = ({ bookings, userId, status }: DisplayUserBoo
   return status !== ""
     ? bookings
         .filter((booking) => booking.userId === userId && booking.status === status)
-        .map((booking) => <BusinessItemWrapper booking={booking} />)
+        .map((booking) => <BusinessItemWrapper key={booking._id} booking={booking} />)
     : bookings
         .filter((booking) => booking.userId === userId)
-        .map((booking) => <BusinessItemWrapper booking={booking} />);
+        .map((booking) => <BusinessItemWrapper key={booking._id} booking={booking} />);
 };
