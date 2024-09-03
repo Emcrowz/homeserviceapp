@@ -5,8 +5,7 @@ import { ErrorPage } from "./ErrorPage";
 import { Button } from "../Components/Common/Button";
 import { fetchBookings } from "../Components/Booking/BookingApi";
 import { useQuery } from "@tanstack/react-query";
-import { DisplayAllUserBookings } from "../Components/Booking/Utils/DisplayAllUserBookings";
-import { DisplayFilteredUserBookings } from "../Components/Booking/Utils/DisplayFilteredUserBookings";
+import { DisplayUserBookings } from "../Components/Booking/Utils/DisplayUserBookings";
 
 // "Cancelled", "Pending", "Confirmed"
 enum BookingStatus {
@@ -42,9 +41,9 @@ export const UserBookings = () => {
       </div>
       <div>
         {filterBy !== "" ? (
-          <DisplayFilteredUserBookings bookings={bookings} userId={user._id} status={filterBy} />
+          <DisplayUserBookings bookings={bookings} userId={user._id} status={filterBy} />
         ) : (
-          <DisplayAllUserBookings bookings={bookings} userId={user._id} />
+          <DisplayUserBookings bookings={bookings} userId={user._id} status="" />
         )}
       </div>
     </div>
