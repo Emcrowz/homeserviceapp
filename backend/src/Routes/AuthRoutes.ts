@@ -1,10 +1,11 @@
 import express from "express";
 import User from "../Models/User";
 import { generateToken } from "../Utils/Password";
+import { RegisterLimiter } from "../Middlewares/RegisterLimiter";
 
 const router = express.Router();
 
-router.post("/register", async (req, res) => {
+router.post("/register", RegisterLimiter, async (req, res) => {
   try {
     const user = req.body;
     const existingUser = await User.findOne({ email: user.email });
