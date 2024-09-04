@@ -7,9 +7,16 @@ import defaultPicture from "../../Assets/defaultService.svg";
 interface BusinessItemProps {
   business: Business;
   isServicesPage?: boolean;
+  customClassName?: string;
+  cardCustomClassName?: string;
 }
 
-export const BusinessItem = ({ business, isServicesPage = false }: BusinessItemProps) => {
+export const BusinessItem = ({
+  business,
+  isServicesPage = false,
+  customClassName,
+  cardCustomClassName,
+}: BusinessItemProps) => {
   const imageUrl =
     Array.isArray(business.imageUrls) && business.imageUrls.length > 0 ? business.imageUrls[0] : defaultPicture;
 
@@ -18,8 +25,8 @@ export const BusinessItem = ({ business, isServicesPage = false }: BusinessItemP
     : styles.linkContainer;
 
   return (
-    <Link to={`/details/${business._id}`} className={linkContainerClass}>
-      <div className={styles.card}>
+    <Link to={`/details/${business._id}`} className={`${linkContainerClass} ${customClassName ?? ""}`.trim()}>
+      <div className={`${styles.card} ${cardCustomClassName ?? ""}`.trim()}>
         <img src={imageUrl} alt={business.name} className={styles.image} />
         <div className={styles.infoContainer}>
           <span className={styles.chip}>{business.category}</span>

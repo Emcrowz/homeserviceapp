@@ -1,0 +1,11 @@
+.userBookingsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 20px;
+}
+.bookingsByStatus {
+  padding: 15px;
+  display: flex;
+  gap: 1rem;
+}

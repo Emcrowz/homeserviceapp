@@ -2,7 +2,6 @@ import express from "express";
 import Booking from "../Models/Booking";
 const router = express.Router();
 
-// == Booking router
 // Get requests
 router.get("/", async (req, res) => {
   try {
@@ -29,20 +28,5 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ message: "Error creating booking", error: err });
   }
 });
-
-// Delete requests
-// Recheck and fix in the future.
-// Problem on line 33.
-//
-// router.delete("/:id", async (req, res) => {
-//   try {
-//     const bookingById = await Booking.findById(req.params.id);
-//     Booking.deleteOne(bookingById);
-//     res.status(204).send("Specified booking has been deleted.");
-//     console.log(bookingById);
-//   } catch (err) {
-//     res.status(404).send("Booking with specified ID not found.");
-//   }
-// });
 
 export default router;
