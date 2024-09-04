@@ -44,11 +44,11 @@ Install dependencies
 Start the project
 
 ```bash
-  npm run start-homeserviceapp-backend
+  npm run start-be
 ```
 
 ```bash
-  npm run start-homeserviceapp-frontend
+  npm run start-fe
 ```
 
 > [!NOTE]
@@ -83,8 +83,8 @@ Creates a new category in the Category list.
 | Parameter | Type     | Description                           |
 | :-------- | :------- | :------------------------------------ |
 | `name`    | `string` | **Required**. Name of the category    |
-| `bgColor` | `object` | **Required**. Object containing color |
 | `icon`    | `object` | **Required**. Object containing URL   |
+| `color`   | `string` | **Required**. Color value in string   |
 
 ### Businesses
 
@@ -120,55 +120,25 @@ Creates a new category in the Category list.
   POST /businesses
 ```
 
-| Parameter       | Type     | Description                                                           |
-| :-------------- | :------- | :-------------------------------------------------------------------- |
-| `name`          | `string` | **Required**. Name of the business                                    |
-| `about`         | `string` | **Required**. Description of the business                             |
-| `address`       | `string` | **Required**. Address of the business                                 |
-| `category`      | `string` | **Required**. Category of the business                                |
-| `contactPerson` | `string` | **Required**. Name and Surname of the contact person for the business |
-| `email`         | `string` | **Required**. Email of the representative                             |
-| `images`        | `array`  | **Required**. Array of the objects containing image URLs              |
-
-#### Updates business information with specified ID
-
-```http
-  PUT /businesses/:id
-```
-
-| Parameter       | Type     | Description                                                           |
-| :-------------- | :------- | :-------------------------------------------------------------------- |
-| `id`            | `number` | **Required**. Id of the business                                      |
-| `name`          | `string` | **Required**. Name of the business                                    |
-| `about`         | `string` | **Required**. Description of the business                             |
-| `address`       | `string` | **Required**. Address of the business                                 |
-| `category`      | `string` | **Required**. Category of the business                                |
-| `contactPerson` | `string` | **Required**. Name and Surname of the contact person for the business |
-| `email`         | `string` | **Required**. Email of the representative                             |
-| `images`        | `array`  | **Required**. Array of the objects containing image URLs              |
-
-#### Get the bussiness request of the specified business on the specified date
-
-```http
-  GET /businesses/:id/bookings/date/:date
-```
-
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `number` | **Required**. Id of the business  |
-| `date`    | `number` | **Required**. Date of the request |
+| Parameter             | Type     | Description                                                                 |
+| :-------------------- | :------- | :-------------------------------------------------------------------------- |
+| `name`                | `string` | **Required**. Name of the business                                          |
+| `about`               | `string` | **Required**. Description of the business                                   |
+| `address`             | `string` | **Required**. Address of the business                                       |
+| `category`            | `string` | **Required**. Category of the business                                      |
+| `contactPerson`       | `string` | **Required**. Name and Surname of the contact person for the business       |
+| `email`               | `string` | **Required**. Email of the representative                                   |
+| `imageUrls`           | `array`  | **Required**. Array of the strings containing image URLs                    |
+| `officialWorkingTime` | `array`  | **Required**. Tuple. Array of two numbers - hour start and hour finish      |
+| `workTimes`           | `array`  | **Required**. Array of tupples of available times for user too use services |
 
 ### Bookings
 
 #### Get bookings of the specified users email
 
 ```http
-  GET /bookings/user/:email
+  GET /bookings
 ```
-
-| Parameter | Type     | Description                     |
-| :-------- | :------- | :------------------------------ |
-| `email`   | `string` | **Required**. Email of the user |
 
 #### Create a new booking record in the bookings list
 
@@ -176,20 +146,11 @@ Creates a new category in the Category list.
   POST /bookings
 ```
 
-| Parameter    | Type     | Description                                 |
-| :----------- | :------- | :------------------------------------------ |
-| `businessId` | `number` | **Required**. Id of the associated business |
-| `date`       | `string` | **Required**. Date of the booking           |
-| `time`       | `string` | **Required**. Time of the booking           |
-| `userEmail`  | `string` | **Required**. Users email address           |
-| `userName`   | `string` | **Required**. Users full name               |
-
-#### Delete specified booking with ID
-
-```http
-  DELETE /bookings/:id
-```
-
-| Parameter | Type     | Description                     |
-| :-------- | :------- | :------------------------------ |
-| `id`      | `number` | **Required**. Id of the booking |
+| Parameter          | Type     | Description                                 |
+| :----------------- | :------- | :------------------------------------------ |
+| `businessId`       | `string` | **Required**. Id of the associated business |
+| `userId`           | `string` | **Required**. Id of the associated user     |
+| `userEmail`        | `string` | **Required**. Users email address           |
+| `date`             | `string` | **Required**. Date of the booking           |
+| `reservationTime`  | `array`  | **Required**. Time of the booking           |
+| `status`           | `string` | Status of the booking.                      |
