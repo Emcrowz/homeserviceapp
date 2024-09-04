@@ -10,6 +10,7 @@ import { Register } from "../Forms/Register.tsx";
 import { BusinessDetails } from "../Pages/BusinessDetails.tsx";
 import { ServicesFiltered } from "../Pages/ServicesFiltered.tsx";
 import { UserBookings } from "../Pages/UserBookings.tsx";
+import { UserManagement } from "../Pages/UserManagement.tsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: ROUTES.USER_BOOKINGS,
         element: <UserBookings />,
+      },
+      {
+        path: ROUTES.USER_MANAGEMENT,
+        element: <UserManagement />,
       },
       {
         path: ROUTES.LOGIN,

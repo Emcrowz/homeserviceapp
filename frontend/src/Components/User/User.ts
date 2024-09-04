@@ -26,6 +26,12 @@ export interface RegisterRequest {
   password: string;
 }
 
+export interface ChangeRequest {
+  _id?: string;
+  name?: string;
+  email?: string;
+}
+
 interface ErrorMessage {
   required: string;
   email: string;
@@ -45,6 +51,12 @@ export const registerValidationSchema: Yup.Schema<RegisterRequest> = Yup.object(
   name: Yup.string().required(errorMessage.required),
   email: Yup.string().email(errorMessage.email).required(errorMessage.required),
   password: Yup.string().required(errorMessage.required),
+});
+
+export const changeDetailsValidationSchema: Yup.Schema<ChangeRequest> = Yup.object().shape({
+  _id: Yup.string(),
+  name: Yup.string().required(errorMessage.required),
+  email: Yup.string().email(errorMessage.email).required(errorMessage.required),
 });
 
 export const useLoginUser = () => {

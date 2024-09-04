@@ -7,7 +7,8 @@ export const ROUTES = {
   REGISTER: "/register",
   SEARCH_CATEGORY: "/search/:category",
   DETAILS: "/details/:id",
-  USER_BOOKINGS: "/bookings",
+  USER_BOOKINGS: "/user/bookings",
+  USER_MANAGEMENT: "/user/details",
 };
 
 export const API = "http://localhost:3005/";
