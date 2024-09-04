@@ -43,4 +43,26 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post("/changeDetails", async (req, res) => {
+  try {
+    const { _id, name, email } = req.body;
+
+    if (!email || !name) {
+      return res.status(400).json({ message: "Please provide name or email." });
+    }
+
+    const newUserDetails = { name: name, email: email };
+    const user = await User.findById(_id).updateOne({ $set: newUserDetails });
+
+    if (!user) {
+      return res.status(401).json({ message: "User does not exist." });
+    }
+
+    return res.status(200).json({ status: "success", message: "User details changed" });
+  } catch (err) {
+    console.error("Error during login:", err);
+    return res.status(500).json({ message: "Error attempting to change user details.", error: (err as Error).message });
+  }
+});
+
 export default router;

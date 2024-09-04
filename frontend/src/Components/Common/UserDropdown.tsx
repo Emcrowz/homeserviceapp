@@ -25,6 +25,10 @@ export const UserDropdown: React.FC = () => {
     navigate(ROUTES.USER_BOOKINGS);
     setIsDropdownOpen(false);
   };
+  const handleMyDetails = () => {
+    navigate(ROUTES.USER_MANAGEMENT);
+    setIsDropdownOpen(false);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -52,6 +56,9 @@ export const UserDropdown: React.FC = () => {
           <div className={styles.dropdownOptions}>
             <button className={styles.dropdownItem} onClick={handleMyBookings}>
               My Bookings
+            </button>
+            <button className={styles.dropdownItem} onClick={handleMyDetails}>
+              My Details
             </button>
             <button className={styles.dropdownItem} onClick={handleLogout}>
               Logout
