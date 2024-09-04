@@ -1,23 +1,171 @@
 .businessDetails {
-  margin-top: 2em;
+  display: flex;
+  flex: 0 0 70%;
+  padding: 0 !important;
+  min-height: 750px;
 }
 
 .businessHero {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border: 1px solid #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 100px;
 }
 
 .businessHeroLeft {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  gap: 1rem;
 }
 
 .businessHeroRight {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  gap: 2rem;
 }
 
 .details {
-  text-align: left;
-  display: grid;
-  grid-template-columns: 4fr 1fr;
+  display: flex;
+  margin-top: 100px;
+  width: 100%;
+}
+.businessHeroImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.businessDetails {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5rem;
+}
+.imageAndDetailsContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.category {
+  color: #8056eb;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background-color: #e5ddfb;
+  border-radius: 30px;
+}
+.nameAdressEmailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bussinessName {
+  font-size: 35px;
+  font-weight: 800;
+}
+.grayText {
+  font-size: 18px;
+  color: #7e8589;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.contactPerson {
+  color: #8056eb;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.iconAdressName {
+  font-size: 20px;
+  color: black;
+  stroke: black;
+  stroke-width: 0.4px;
+}
+.iconUpload {
+  font-size: 2.5rem;
+  vertical-align: middle;
+}
+.uploadButton {
+  padding: 0 10px;
+}
+.iconPerson {
+  font-size: 25px;
+}
+.availableTime {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.iconClock {
+  font-size: 1.5rem;
+  color: black;
+  stroke: black;
+  stroke-width: 0.4px;
+}
+.similiarBussinessesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 0 0 30%;
+}
+.customBusinessList {
+  display: flex;
+  flex-direction: column;
+}
+.customBusinessItem {
+  display: flex;
+  flex-direction: row !important;
+  height: auto;
+}
+.customCard {
+  display: flex;
+  flex-direction: row;
+  height: auto !important;
+  background-color: red!;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 70%;
+  padding: 0 50px;
+  gap: 15px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 6px 20px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  margin-right: 50px;
+}
+.gallery {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 30%;
+  padding: 0 50px;
+}
+.descriptionTitle {
+  font-size: 30px;
+  font-weight: 600;
+}
+.descriptionText {
+  font-size: 20px;
+  font-weight: 400;
+}
+.galleryImage {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.galleryTitle {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Booking } from "../Booking/Booking";
-import { Business } from "./Business";
-import { BusinessItem } from "./BusinessItem";
-import { fetchBusinessById } from "./BusinessApi";
+import { Business } from "../Business/Business";
+import { UserBookingItem } from "../Booking/UserBookingItem";
+import { fetchBusinessById } from "../Business/BusinessApi";
 
 interface BusinessItemWrapperProps {
   booking: Booking;
@@ -34,5 +34,5 @@ export const BusinessItemWrapper = ({ booking }: BusinessItemWrapperProps) => {
     return <div>Loading...</div>;
   }
 
-  return <BusinessItem business={businessItem} />;
+  return <UserBookingItem business={businessItem} booking={booking} />;
 };

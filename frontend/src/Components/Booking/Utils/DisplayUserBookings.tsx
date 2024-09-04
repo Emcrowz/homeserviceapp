@@ -4,15 +4,14 @@ import { Booking } from "../Booking";
 interface DisplayUserBookingsProps {
   bookings: Booking[];
   userId: string;
-  status?: string;
 }
 
-export const DisplayUserBookings = ({ bookings, userId, status }: DisplayUserBookingsProps) => {
-  return status !== ""
-    ? bookings
-        .filter((booking) => booking.userId === userId && booking.status === status)
-        .map((booking) => <BusinessItemWrapper booking={booking} />)
-    : bookings
-        .filter((booking) => booking.userId === userId)
-        .map((booking) => <BusinessItemWrapper booking={booking} />);
+export const DisplayUserBookings = ({ bookings, userId }: DisplayUserBookingsProps) => {
+  return (
+    <div>
+      {bookings.map((booking) => (
+        <BusinessItemWrapper key={booking._id} booking={booking} />
+      ))}
+    </div>
+  );
 };

@@ -11,6 +11,8 @@ interface BusinessListProps {
   customClassName?: string;
   layoutStyle?: "default" | "three-per-row" | "five-per-row";
   isServicesPage?: boolean;
+  itemCustomClassName?: string;
+  itemCardCustomClassName?: string;
 }
 
 const useBusinesses = (showFeatured: boolean) => {
@@ -22,11 +24,12 @@ const useBusinesses = (showFeatured: boolean) => {
 
 export const BusinessList = ({
   categoryName,
-  listStyle,
   showFeatured = false,
   customClassName,
   layoutStyle = "default",
   isServicesPage = false,
+  itemCustomClassName,
+  itemCardCustomClassName,
 }: BusinessListProps) => {
   const { data } = useBusinesses(showFeatured);
   const businesses = data ?? [];
@@ -42,7 +45,13 @@ export const BusinessList = ({
   return (
     <div className={containerClass.trim()}>
       {filteredBusinesses.map((business) => (
-        <BusinessItem key={business._id} business={business} isServicesPage={isServicesPage} />
+        <BusinessItem
+          key={business._id}
+          business={business}
+          isServicesPage={isServicesPage}
+          customClassName={itemCustomClassName}
+          cardCustomClassName={itemCardCustomClassName}
+        />
       ))}
     </div>
   );
