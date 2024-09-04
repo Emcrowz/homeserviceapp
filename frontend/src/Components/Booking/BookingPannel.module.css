@@ -1,8 +1,8 @@
 .pannel {
-  margin: 1rem 0;
+  margin: auto;
   padding: 1rem;
   text-align: center;
-  background-color: #bababa;
+  background-color: white;
 }
 
 .workTimeButtons {
@@ -13,14 +13,33 @@
   margin: 1rem 0;
 }
 
-.workTimeButtons button {
-  background-color: inherit;
-  border: 1px solid #000;
-  border-radius: 2rem;
+.panelButtons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
-.pannelButtons {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
+.workTimeButtons button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.workTimeButtons button:hover {
+  background-color: #8056eb;
+  color: white;
+  transform: scale(1.05);
+}
+
+.workTimeButtons button:disabled {
+  background-color: #e0e0e0;
+  color: #aaa;
+  cursor: not-allowed;
 }

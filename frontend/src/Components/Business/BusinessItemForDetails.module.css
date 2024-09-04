@@ -1,0 +1,47 @@
+.customBusinessItem {
+  display: flex;
+  max-height: 250px;
+  text-decoration: none;
+  color: inherit;
+  gap: 1rem;
+  border-radius: 15px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 6px 20px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.customBusinessItem:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.15),
+    0 12px 40px rgba(0, 0, 0, 0.15);
+}
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-decoration: none;
+  height: 100px;
+}
+.businessPicture {
+  height: 125px;
+  width: 125px;
+  object-fit: cover;
+  border-radius: 20px;
+  background-color: rgba(128, 128, 128, 0.137);
+}
+.businessName {
+  font-weight: 800;
+  font-size: 22.5px;
+  text-decoration: none;
+}
+.personName {
+  font-size: 20px;
+  color: #8056eb;
+}
+.adress {
+  font-size: 20px;
+  color: gray;
+}
